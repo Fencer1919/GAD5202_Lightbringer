@@ -43,8 +43,11 @@ public class AttackState : IState
         //not the best solution
         player.IsDodging = false;
 
+        //Holding Mouse Button to continue attacking
+
         if (player.meleeAttackInput && Time.time >= nextMeleeAttackTime)
-        { 
+        {
+            //setting animation variable for character animation based on mouse position 
             if ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position).x > 0)
             {
                 player.Anim.SetBool("isLookingRight", true);
