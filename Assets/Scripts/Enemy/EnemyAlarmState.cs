@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAlarmState : EnemyState
-{
+{  
     public void EnterState(MainEnemy enemy)
     {
         Debug.Log("EnemyAlarm Entered");
@@ -16,7 +16,11 @@ public class EnemyAlarmState : EnemyState
 
     public void UpdateState(MainEnemy enemy)
     {
-        enemy.HandleEnemyMovement();
+        if (enemy.aIDestinationSetter.target != null 
+            && (enemy.aIDestinationSetter.target.position - enemy.transform.position).magnitude < 3)
+        {
+            enemy.HandleAttack();
+        }
 
         if (!enemy.OnAlarmState)
         {

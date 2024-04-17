@@ -63,7 +63,7 @@ public class AttackState : IState
             nextMeleeAttackTime = Time.time + 1f / player.attackRate;            
         }
 
-        //Ranged Attack
+        //Ranged HandleAttack
 
         if (player.rangedAttackInput && Time.time >= rangedAttackTime)
         {

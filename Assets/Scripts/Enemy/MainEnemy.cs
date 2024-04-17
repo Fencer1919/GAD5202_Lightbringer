@@ -1,21 +1,22 @@
+using Pathfinding;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MainEnemy : MonoBehaviour
 {
+    public AIDestinationSetter aIDestinationSetter;
+    public AIPath aIPath;
+
     private EnemyState currentEnemyState;
 
+    public event Action OnEnemyAttack;
+
+
     private bool onAlarmState;
-
-    public Vector3 targetLocation;
-
     public bool OnAlarmState { get => onAlarmState; set => onAlarmState = value; }
-
-    public void HandleEnemyMovement()
-    {
-        transform.Translate(Time.deltaTime * targetLocation * 5);
-    }
 
     void Start()
     {
@@ -27,6 +28,11 @@ public class MainEnemy : MonoBehaviour
     void Update()
     {
         currentEnemyState.UpdateState(this);
+    }
+
+    public void HandleAttack()
+    {
+        OnEnemyAttack?.Invoke();
     }
 
     public void ChangeState(EnemyState newState)

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration;
     private Vector2 dashDirection;
 
-    [Header("Attack")]
+    [Header("HandleAttack")]
     public float attackRate;
     public float rangedAttackRate;
 
