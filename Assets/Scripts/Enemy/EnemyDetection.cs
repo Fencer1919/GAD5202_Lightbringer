@@ -19,6 +19,9 @@ public class EnemyDetection : MonoBehaviour
     void Update()
     {
         PlayerDetection();
+
+        Debug.Log(enemy.aIDestinationSetter.target);
+
     }
 
     public void PlayerDetection()

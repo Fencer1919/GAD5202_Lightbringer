@@ -7,11 +7,13 @@ public class EnemyAlarmState : EnemyState
     public void EnterState(MainEnemy enemy)
     {
         Debug.Log("EnemyAlarm Entered");
+
+        enemy.enemyAnim.SetBool("isWalking", true);
     }
 
     public void ExitState(MainEnemy enemy)
     {
-        
+        enemy.enemyAnim.SetBool("isWalking", false);
     }
 
     public void UpdateState(MainEnemy enemy)
@@ -19,10 +21,11 @@ public class EnemyAlarmState : EnemyState
         if (enemy.aIDestinationSetter.target != null 
             && (enemy.aIDestinationSetter.target.position - enemy.transform.position).magnitude < 3)
         {
-            enemy.HandleAttack();
+            enemy.OnAttackState = true;
+            enemy.ChangeState(new EnemyAttackState());
         }
 
-        if (!enemy.OnAlarmState)
+        if (!enemy.OnAlarmState && !enemy.OnAttackState)
         {
             enemy.ChangeState(new EnemyIdleState());
         }

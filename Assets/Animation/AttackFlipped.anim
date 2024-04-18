@@ -43,7 +43,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Weapon/WeaponHitBox
+    path: Weapon
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -71,7 +71,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 182651905
+      path: 1855955664
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 61
@@ -140,7 +140,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Weapon/WeaponHitBox
+    path: Weapon
     classID: 61
     script: {fileID: 0}
     flags: 0
