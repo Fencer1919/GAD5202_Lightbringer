@@ -388,6 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 4662040536045063072}
   hitBox: {fileID: 8499810219440376513}
+  hitboxCollider: {fileID: 8058849799521830708}
   enemyDamage: 3
 --- !u!61 &8058849799521830708
 BoxCollider2D:

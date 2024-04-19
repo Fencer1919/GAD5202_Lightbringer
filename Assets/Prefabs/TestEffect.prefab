@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 420151120813512070}
   - component: {fileID: 5450637552307193593}
   - component: {fileID: 13927303184232747}
-  - component: {fileID: 3173161183709118022}
-  m_Layer: 0
+  - component: {fileID: -2094999777712317983}
+  m_Layer: 9
   m_Name: TestEffect
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -143,7 +143,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -1.28}
   serializedVersion: 2
   m_Radius: 0.9699843
---- !u!114 &3173161183709118022
+--- !u!114 &-2094999777712317983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

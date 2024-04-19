@@ -5,10 +5,20 @@ using UnityEngine;
 
 public class PlayerDamageManager : MonoBehaviour
 {
-        public static event Action<float> EnemyDamaged;
+    public static event Action<float> EnemyDamaged;
 
-        public void DamageEnemy(float damage)
-        {
-            EnemyDamaged?.Invoke(damage);
-        }
+    public static PlayerDamageManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
+    
+    public void DamageEnemy(float damage)
+    {
+        EnemyDamaged?.Invoke(damage);
+    }
 }

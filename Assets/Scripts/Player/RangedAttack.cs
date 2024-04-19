@@ -19,8 +19,7 @@ public class RangedAttack : MonoBehaviour
         //damage enemy
         if(collision.CompareTag("Enemy"))
         {
-            playerDamageManager.DamageEnemy(rangedDamage);
-            //collision.GetComponent<EnemyHealth>().TakeDamage(5);
+            PlayerDamageManager.instance.DamageEnemy(rangedDamage);
         }
     }
 }

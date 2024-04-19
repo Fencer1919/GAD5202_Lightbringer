@@ -7,8 +7,10 @@ public class EnemyDetection : MonoBehaviour
 {
     [Header("Detection")]
     [SerializeField] LayerMask targetLayer;
+    [SerializeField] LayerMask ignoreEnemyLayerMask;
     [SerializeField] GameObject targetGameObject;
     [SerializeField] private float sphereRadius;
+
 
 
 
@@ -22,9 +24,6 @@ public class EnemyDetection : MonoBehaviour
     {
         PlayerDetection();
         CheckFacingRight();
-
-        Debug.Log(enemy.aIDestinationSetter.target);
-
     }
 
     private void CheckFacingRight()
@@ -65,15 +64,17 @@ public class EnemyDetection : MonoBehaviour
     {
         RaycastHit2D hit;
 
-        hit = Physics2D.Linecast(transform.position, targetGameObject.transform.position, targetLayer);
+        hit = Physics2D.Linecast(transform.position, targetGameObject.transform.position, ignoreEnemyLayerMask);
 
-        if (hit.collider.CompareTag("Player"))
+        Debug.Log(hit.collider.name);
+
+        if (hit.collider.CompareTag("Obstacle"))
         {
-            return true;
+            return false;
         }
         else
         {
-            return false;
+            return true;
         }
     }
 
