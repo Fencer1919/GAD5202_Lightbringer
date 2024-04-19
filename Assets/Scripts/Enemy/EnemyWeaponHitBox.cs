@@ -7,8 +7,13 @@ public class EnemyWeaponHitBox : MonoBehaviour
     [SerializeField] MainEnemy enemy;
 
     [SerializeField] GameObject hitBox;
+    [SerializeField] Collider2D hitboxCollider;
     private Vector2 hitBoxDirection;
     private Transform aimTransform;
+
+    [SerializeField] private float enemyDamage;
+
+    public Collider2D HitboxCollider { get => hitboxCollider; set => hitboxCollider = value; }
 
     void Start()
     {
@@ -26,9 +31,9 @@ public class EnemyWeaponHitBox : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerController player))
+        if (collision.TryGetComponent(out PlayerHealth player))
         {
-            Debug.Log("Player Damaged!");
+            player.TakeDamage(enemyDamage);
         }
     }
 

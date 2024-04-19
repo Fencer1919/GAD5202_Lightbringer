@@ -10,6 +10,10 @@ public class MainEnemy : MonoBehaviour
     public AIDestinationSetter aIDestinationSetter;
     public AIPath aIPath;
 
+    public EnemyWeaponHitBox enemyHitBox;
+
+    public float stoppingDistance;
+
     public Animator enemyAnim;
 
 

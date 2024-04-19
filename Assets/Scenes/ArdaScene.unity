@@ -387,6 +387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1315921145}
+  playerDamageManager: {fileID: 1315921149}
+  meleeDamage: 7
   hitBox: {fileID: 449681853}
 --- !u!61 &449681856
 BoxCollider2D:
@@ -395,7 +397,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449681853}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -417,7 +419,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 1.5, y: 0}
@@ -711,10 +713,12 @@ GameObject:
   - component: {fileID: 1315921143}
   - component: {fileID: 1315921142}
   - component: {fileID: 1315921144}
-  - component: {fileID: 1315921145}
   - component: {fileID: 1315921146}
   - component: {fileID: 1315921147}
   - component: {fileID: 1315921148}
+  - component: {fileID: 1315921145}
+  - component: {fileID: 1315921149}
+  - component: {fileID: 1315921150}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -926,6 +930,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1315921149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315921141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b82204b4a02d4de4ab86a8d5eebb73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1315921150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315921141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33946785a4361475598ae566b0e4016c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  playerHealth: 10
+--- !u!61 &1461028526 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8058849799521830708, guid: eabf51cbe2372184a9728784e333b1e4, type: 3}
+  m_PrefabInstance: {fileID: 7572167358055905322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1660858950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,13 +1156,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2567606506862858932, guid: eabf51cbe2372184a9728784e333b1e4, type: 3}
+      propertyPath: hitboxCollider
+      value: 
+      objectReference: {fileID: 1461028526}
     - target: {fileID: 4827822859206726802, guid: eabf51cbe2372184a9728784e333b1e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.91
+      value: 7.41
       objectReference: {fileID: 0}
     - target: {fileID: 4827822859206726802, guid: eabf51cbe2372184a9728784e333b1e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.04
       objectReference: {fileID: 0}
     - target: {fileID: 4827822859206726802, guid: eabf51cbe2372184a9728784e333b1e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1160,10 +1199,6 @@ PrefabInstance:
     - target: {fileID: 4827822859206726802, guid: eabf51cbe2372184a9728784e333b1e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8058849799521830708, guid: eabf51cbe2372184a9728784e333b1e4, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

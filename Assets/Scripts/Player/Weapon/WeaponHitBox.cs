@@ -5,6 +5,9 @@ using UnityEngine;
 public class WeaponHitBox : MonoBehaviour
 {
     [SerializeField] PlayerController player;
+    [SerializeField] private PlayerDamageManager playerDamageManager;
+
+    [SerializeField] private float meleeDamage;
 
     [SerializeField] private GameObject hitBox;
     private Vector2 hitBoxDirection;
@@ -15,6 +18,7 @@ public class WeaponHitBox : MonoBehaviour
         aimTransform = GetComponent<Transform>();
 
         player.onAttack += Player_onAttack;
+        
 
     }
 
@@ -23,6 +27,14 @@ public class WeaponHitBox : MonoBehaviour
         hitBoxDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
         float angle = Mathf.Atan2(hitBoxDirection.y, hitBoxDirection.x) * Mathf.Rad2Deg;
         aimTransform.eulerAngles = new Vector3(0, 0, angle);
+    }
+    
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.CompareTag("Enemy"))
+        {
+            playerDamageManager.DamageEnemy(meleeDamage);
+        }
     }
 
 }
