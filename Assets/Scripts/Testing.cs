@@ -10,7 +10,9 @@ public class Testing : MonoBehaviour
         Debug.Log(levelSystem.GetLevelNumber());
         levelSystem.AddExperience(50);
         Debug.Log(levelSystem.GetLevelNumber());
-        levelSystem.AddExperience(60);
+        levelSystem.AddExperience(150);
+        Debug.Log(levelSystem.GetLevelNumber());
+        levelSystem.AddExperience(150);
         Debug.Log(levelSystem.GetLevelNumber());
 
     }
