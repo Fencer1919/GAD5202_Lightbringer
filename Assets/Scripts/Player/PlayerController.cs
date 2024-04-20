@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private bool isDodging;
     private bool isAttacking;
 
+    private bool isAttributeTab;
+
     public bool meleeAttackInput;
     public bool rangedAttackInput;
 
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
 
     public event Action onAttack;
+    public static event Action onToggleAttributeTab;
 
     //Properties
     public bool IsWalking { get => isWalking; set => isWalking = value; }
@@ -54,6 +57,7 @@ public class PlayerController : MonoBehaviour
     public GameObject PlayerWeapon { get => playerWeapon; set => playerWeapon = value; }
     public Animator Anim { get => anim; set => anim = value; }
     public Vector2 MovementVector { get => movementVector; set => movementVector = value; }
+    public bool IsAttributeTab { get => isAttributeTab; set => isAttributeTab = value; }
 
     private void Awake()
     {
@@ -76,8 +80,24 @@ public class PlayerController : MonoBehaviour
 
         playerInputAction.Gameplay.RangedAttack.performed += RangedAttack;
         playerInputAction.Gameplay.RangedAttack.canceled += RangedAttack;
+
+        playerInputAction.Gameplay.AttributeTab.started += AttributeTab;
     }
 
+    void OnDisable()
+    {
+        playerInputAction.Gameplay.Movement.performed -= Movement;
+        playerInputAction.Gameplay.Movement.canceled -= Movement;
+
+        playerInputAction.Gameplay.Dodge.performed -= Dodge;
+        playerInputAction.Gameplay.Dodge.canceled -= Dodge;
+
+        playerInputAction.Gameplay.MeleeAttack.performed -= MeleeAttack;
+        playerInputAction.Gameplay.MeleeAttack.canceled -= MeleeAttack;
+
+        playerInputAction.Gameplay.RangedAttack.performed -= RangedAttack;
+        playerInputAction.Gameplay.RangedAttack.canceled -= RangedAttack;
+    }
 
     void Start()
     {
@@ -87,7 +107,6 @@ public class PlayerController : MonoBehaviour
         Anim.SetFloat("attackSpeed", attackRate);
 
     }
-
     
     void Update()
     {
@@ -178,6 +197,20 @@ public class PlayerController : MonoBehaviour
         if (rangedAttackInput) { return; }
 
         IsAttacking = false;
+    }
+
+    private void AttributeTab(InputAction.CallbackContext context)
+    {
+        if (IsAttributeTab)
+        {
+            IsAttributeTab = false;
+        }
+        else
+        {
+            IsAttributeTab = true;
+        }
+
+        onToggleAttributeTab?.Invoke();
     }
 
 }
