@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class OathTracker : MonoBehaviour
@@ -23,28 +24,21 @@ public class OathTracker : MonoBehaviour
 
     public int currentOathValue;
 
-    private static OathTracker _instance;
+    public TMP_Text text;
 
-    // Bu metod, Singleton örneğini döndürür. Eğer örnek yoksa, oluşturur ve döndürür.
-    public static OathTracker Instance
+    void Awake()
     {
-        get
-        {
-            // Eğer örnek yoksa, oluştur
-            if (_instance == null)
-            {
-                // Bir GameObject oluştur ve bu sınıfa bağla
-                GameObject singletonObject = new GameObject("SingletonExample");
-                _instance = singletonObject.AddComponent<OathTracker>();
-                DontDestroyOnLoad(singletonObject); // Yeni sahnelerde bu nesnenin yok olmasını engeller
-            }
-            return _instance;
-        }
+        RangedAttack.onEnemyKilled += OnEnemyKilled;
     }
 
+    public void OnEnemyKilled()
+    {
+        currentOathValue += 1;
+    }
 
     void Update()
     {
+        text.text = currentOathValue.ToString();
         Debug.Log(currentOathValue);
         /*
         if(spawnedPaladinList.Count > maxPaladinCount)

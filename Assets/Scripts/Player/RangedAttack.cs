@@ -7,10 +7,15 @@ public class RangedAttack : MonoBehaviour
 {
     public float rangedDamage;
 
-    [SerializeField] private PlayerDamageManager playerDamageManager;
+    public PlayerController playerController;
+    public GameObject rangedObj;
 
-    [SerializeField] private float detectionRadius;
-    [SerializeField] private LayerMask targetLayer;
+    public static event Action onEnemyKilled;
+
+    void Start()
+    {
+        playerController = GetComponent<PlayerController>();
+    }
 
     public void DestroyObject()
     {
@@ -19,18 +24,14 @@ public class RangedAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //damage enemy
-        if (collision.TryGetComponent(out EnemyHealth enemy))
+        if (collision.CompareTag("Enemy"))
         {
-            enemy.TakeDamage(rangedDamage);
+            collision.GetComponent<EnemyHealth>().TakeDamage(rangedDamage);
 
             if (collision.GetComponent<EnemyHealth>().IsDead)
             {
-                OathTracker.Instance.currentOathValue += 1;
-
-                Debug.Log(OathTracker.Instance.currentOathValue);
+                onEnemyKilled?.Invoke();
             }
-
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,11 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float enemyHealthValue;
 
+    public int enemyMeleeExperience;
+
     public MainEnemy enemy;
+
+    public static event Action<int> onEnemyDeath;
 
 
 
@@ -39,6 +44,8 @@ public class EnemyHealth : MonoBehaviour
         IsDead = true;
         Destroy(gameObject, 2f);
         DeadStateActive();
+
+        onEnemyDeath?.Invoke(enemyMeleeExperience);
     }
 
     public void DeadStateActive()

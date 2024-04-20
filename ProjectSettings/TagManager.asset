@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - HolyLayer
   - PlayerHitBox
+  - PaladinHitBox
   layers:
   - Default
   - TransparentFX

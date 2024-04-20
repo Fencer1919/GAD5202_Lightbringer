@@ -6,12 +6,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+
     private bool isWalking;
     private bool isDodging;
     private bool isAttacking;
 
     public bool meleeAttackInput;
     public bool rangedAttackInput;
+
+    [Header("Oath")]
+    [SerializeField] public OathTracker oathTracker;
 
     [Header("Component")]
     [SerializeField] private Animator anim;
@@ -29,6 +34,8 @@ public class PlayerController : MonoBehaviour
     [Header("HandleAttack")]
     public float attackRate;
     public float rangedAttackRate;
+
+    public GameObject rangedObj;
 
     public GameObject rangedAttackObject;
 
@@ -50,6 +57,11 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
         playerInputAction = new PlayerInputAction();
         playerInputAction.Enable();
 
@@ -154,7 +166,9 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 10;
 
-        Instantiate(rangedAttackObject, spawnPosition, Quaternion.identity);
+        rangedObj = Instantiate(rangedAttackObject, spawnPosition, Quaternion.identity);
+
+
     }
 
     public void HandleRangedAttackCooldown()

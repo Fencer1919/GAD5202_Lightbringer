@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthValue: 7
+  enemyMeleeExperience: 100
   enemy: {fileID: 4662040536045063072}
 --- !u!70 &1453120073568936757
 CapsuleCollider2D:
@@ -304,7 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5189604418523666922}
   - component: {fileID: 993627324777560975}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: DetectionObject
   m_TagString: EnemyDetection
   m_Icon: {fileID: 0}
@@ -343,9 +344,9 @@ MonoBehaviour:
     m_Bits: 8
   ignoreEnemyLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 255
   targetGameObject: {fileID: 0}
-  sphereRadius: 6
+  sphereRadius: 8.2
   enemy: {fileID: 4662040536045063072}
 --- !u!1 &8499810219440376513
 GameObject:

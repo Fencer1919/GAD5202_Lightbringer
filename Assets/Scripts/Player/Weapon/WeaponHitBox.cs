@@ -5,8 +5,7 @@ using UnityEngine;
 public class WeaponHitBox : MonoBehaviour
 {
     [SerializeField] PlayerController player;
-    [SerializeField] private PlayerDamageManager playerDamageManager;
-    [SerializeField] private OathTracker paladinSpawner;
+    [SerializeField] private OathTracker oathTracker;
 
     [SerializeField] private float meleeDamage;
 
@@ -38,9 +37,7 @@ public class WeaponHitBox : MonoBehaviour
 
             if (collider.GetComponent<EnemyHealth>().IsDead)
             {
-                OathTracker.Instance.currentOathValue -= 1;
-
-                Debug.Log(OathTracker.Instance.currentOathValue);
+                oathTracker.currentOathValue -= 1;
             }
             
 
