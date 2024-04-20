@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class LevelSystem : MonoBehaviour
 {
+
     [SerializeField] private int level;
     [SerializeField] private int experience;
     [SerializeField] private int[] experienceToNextLevel = {
@@ -9,6 +11,9 @@ public class LevelSystem : MonoBehaviour
         1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
         3600, 3800, 4000, 4500, 5000, 5500, 6000, 6500, 7000,
         7500, 8000, 8500, 9000, 9500, 10000};
+
+
+    public static event Action onLevelUp;
 
     void Awake()
     {
@@ -30,6 +35,9 @@ public class LevelSystem : MonoBehaviour
             // Enough experience to level up
             experience -= experienceToNextLevel[level];
             level++;
+
+            onLevelUp?.Invoke();
+
         }
     }
 

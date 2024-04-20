@@ -201,7 +201,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 160378193}
   m_OnClick:
     m_PersistentCalls:
@@ -338,19 +338,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 199025978}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 528347361}
-        m_TargetAssemblyTypeName: AttributeSystem, Assembly-CSharp
-        m_MethodName: SetStrength
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &199025978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,6 +937,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttributeTab: {fileID: 1859200749}
+  attributeButtons:
+  - {fileID: 1753527691}
+  - {fileID: 1999785626}
+  - {fileID: 715763597}
+  - {fileID: 1661607390}
+  - {fileID: 1185422766}
+  - {fileID: 160378192}
 --- !u!1 &373166490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,8 +1662,9 @@ MonoBehaviour:
   critChance: 0
   baseHP: 100
   baseDamageRanged: 50
-  rangedCooldown: 4
-  dodgeCooldown: 1
+  baseRangedCooldown: 4
+  baseDodgeCooldown: 1
+  spendableAttributePoints: 0
 --- !u!1 &592288854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,7 +1878,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 715763598}
   m_OnClick:
     m_PersistentCalls:
@@ -2625,19 +2621,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1018878262}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 528347361}
-        m_TargetAssemblyTypeName: AttributeSystem, Assembly-CSharp
-        m_MethodName: SetHealthPoints
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1018878262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2758,19 +2742,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1095521146}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 528347361}
-        m_TargetAssemblyTypeName: AttributeSystem, Assembly-CSharp
-        m_MethodName: SetWisdom
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1095521146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7987,7 +7959,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1185422767}
   m_OnClick:
     m_PersistentCalls:
@@ -8994,19 +8966,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1495867954}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 528347361}
-        m_TargetAssemblyTypeName: AttributeSystem, Assembly-CSharp
-        m_MethodName: SetHaste
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1495867954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9127,19 +9087,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1529100258}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 528347361}
-        m_TargetAssemblyTypeName: AttributeSystem, Assembly-CSharp
-        m_MethodName: SetDexterity
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1529100258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9189,6 +9137,7 @@ GameObject:
   - component: {fileID: 1660858953}
   - component: {fileID: 1660858952}
   - component: {fileID: 1660858951}
+  - component: {fileID: 1660858954}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -9240,7 +9189,7 @@ MonoBehaviour:
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
-    m_BlendHint: 0
+    m_BlendHint: 1
     m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:
@@ -9263,6 +9212,19 @@ Transform:
   - {fileID: 274338927}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1660858954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660858950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04cc73188f0e245ac80a492e034de33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineVirtualCamera: {fileID: 1660858952}
 --- !u!1 &1661607388
 GameObject:
   m_ObjectHideFlags: 0
@@ -9341,7 +9303,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1661607391}
   m_OnClick:
     m_PersistentCalls:
@@ -9572,7 +9534,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1753527692}
   m_OnClick:
     m_PersistentCalls:
@@ -9709,19 +9671,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1831850117}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 528347361}
-        m_TargetAssemblyTypeName: AttributeSystem, Assembly-CSharp
-        m_MethodName: SetIntelligence
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1831850117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9926,7 +9876,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1999785627}
   m_OnClick:
     m_PersistentCalls:

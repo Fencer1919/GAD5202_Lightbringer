@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AttributeSystem : MonoBehaviour
@@ -23,14 +24,19 @@ public class AttributeSystem : MonoBehaviour
     private float dodgeCooldownModifier = 1f;
 
     //Base Stats
-    [SerializeField] private float baseDamageMelee = 1f;
-    [SerializeField] private float critChance = 0f;
-    [SerializeField] private float baseHP = 1f;
-    [SerializeField] private float baseDamageRanged = 1f;
-    [SerializeField] private float rangedCooldown = 1f;
-    [SerializeField] private float dodgeCooldown = 1f;
+    [SerializeField] private float baseDamageMelee;
+    [SerializeField] private float critChance;
+    [SerializeField] private float baseHP;
+    [SerializeField] private float baseDamageRanged;
+    [SerializeField] private float baseRangedCooldown;
+    [SerializeField] private float baseDodgeCooldown;
+
+    public int spendableAttributePoints;
+
+    public static event Action noAttributePoints;
 
     // Update attributes based on modifiers
+    /*
     private void UpdateAttributes()
     {
         weaponHitBox.MeleeDamage += baseDamageMelee * 0.1f;
@@ -40,42 +46,117 @@ public class AttributeSystem : MonoBehaviour
         rangedCooldownModifier = 1f - (wisdom * 0.01f);
         dodgeCooldownModifier = 1f - (haste * 0.01f);
     }
+    */
+    public void Awake()
+    {
+        LevelSystem.onLevelUp += OnLevelUp;
+    }
+
+    private void OnLevelUp()
+    {
+        spendableAttributePoints = 2;
+    }
+
+    private void SetAllButtonsDisabled()
+    {
+        noAttributePoints.Invoke();
+    }
 
     // Setters for attribute points
     public void SetStrength(int value)
     {
         strength += value;
-        UpdateAttributes();
+
+        weaponHitBox.MeleeDamage += baseDamageMelee * 0.1f;
+
+        spendableAttributePoints--;
+
+        if(spendableAttributePoints < 1)
+        {
+            SetAllButtonsDisabled();
+        }
+
+        //UpdateAttributes();
     }
 
     public void SetDexterity(int value)
     {
         dexterity += value;
-        UpdateAttributes();
+
+        critChanceModifier = dexterity * 0.01f;
+
+        spendableAttributePoints--;
+
+        if(spendableAttributePoints < 1)
+        {
+            SetAllButtonsDisabled();
+        }
+
+        //UpdateAttributes();
     }
 
     public void SetHealthPoints(int value)
     {
         healthPoints += value;
-        UpdateAttributes();
+
+        playerHealth.MaxHealth += baseHP * 0.05f;
+
+        spendableAttributePoints--;
+
+        if(spendableAttributePoints < 1)
+        {
+            SetAllButtonsDisabled();
+        }
+
+        //UpdateAttributes();
     }
 
     public void SetIntelligence(int value)
     {
         intelligence += value;
-        UpdateAttributes();
+
+        rangedAttack.rangedDamage += baseDamageRanged * 0.1f;
+
+        spendableAttributePoints--;
+
+        if(spendableAttributePoints < 1)
+        {
+            SetAllButtonsDisabled();
+        }
+
+        //UpdateAttributes();
     }
 
     public void SetWisdom(int value)
     {
         wisdom += value;
-        UpdateAttributes();
+
+        rangedCooldownModifier = baseRangedCooldown - (wisdom * 0.01f);
+
+        spendableAttributePoints--;
+
+        if(spendableAttributePoints < 1)
+        {
+            SetAllButtonsDisabled();
+        }
+
+        //UpdateAttributes();
     }
 
     public void SetHaste(int value)
     {
         haste += value;
-        UpdateAttributes();
+
+        dodgeCooldownModifier = baseDodgeCooldown - (haste * 0.01f);
+
+        spendableAttributePoints--;
+
+        if(spendableAttributePoints < 1)
+        {
+            SetAllButtonsDisabled();
+        }
+
+        //UpdateAttributes();
     }
 
     // Getters for attribute modifiers
