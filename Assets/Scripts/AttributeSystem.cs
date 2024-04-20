@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class AttributeSystem : MonoBehaviour
 {
+    public PlayerController playerController;
+    public PlayerHealth playerHealth;
+    public WeaponHitBox weaponHitBox;
+    public RangedAttack rangedAttack;
     // Define attributes
     [SerializeField] private int strength = 0;
     [SerializeField] private int dexterity = 0;
@@ -18,13 +22,21 @@ public class AttributeSystem : MonoBehaviour
     private float rangedCooldownModifier = 1f;
     private float dodgeCooldownModifier = 1f;
 
+    //Base Stats
+    [SerializeField] private float baseDamageMelee = 1f;
+    [SerializeField] private float critChance = 0f;
+    [SerializeField] private float baseHP = 1f;
+    [SerializeField] private float baseDamageRanged = 1f;
+    [SerializeField] private float rangedCooldown = 1f;
+    [SerializeField] private float dodgeCooldown = 1f;
+
     // Update attributes based on modifiers
     private void UpdateAttributes()
     {
-        meleeDamageModifier = 1f + (strength * 0.02f);
+        weaponHitBox.MeleeDamage += baseDamageMelee * 0.1f;
         critChanceModifier = dexterity * 0.01f;
-        healthPointsModifier = 1f + (healthPoints * 0.01f);
-        rangedDamageModifier = 1f + (intelligence * 0.02f);
+        playerHealth.MaxHealth += baseHP * 0.05f;
+        rangedAttack.rangedDamage += baseDamageRanged * 0.1f;
         rangedCooldownModifier = 1f - (wisdom * 0.01f);
         dodgeCooldownModifier = 1f - (haste * 0.01f);
     }

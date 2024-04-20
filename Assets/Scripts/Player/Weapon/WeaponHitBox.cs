@@ -13,6 +13,8 @@ public class WeaponHitBox : MonoBehaviour
     private Vector2 hitBoxDirection;
     private Transform aimTransform;
 
+    public float MeleeDamage { get => meleeDamage; set => meleeDamage = value; }
+
     private void Start()
     {
         aimTransform = GetComponent<Transform>();
@@ -33,7 +35,7 @@ public class WeaponHitBox : MonoBehaviour
     {
         if(collider.CompareTag("Enemy"))
         {
-            collider.GetComponent<EnemyHealth>().TakeDamage(meleeDamage);;
+            collider.GetComponent<EnemyHealth>().TakeDamage(MeleeDamage);;
 
             if (collider.GetComponent<EnemyHealth>().IsDead)
             {

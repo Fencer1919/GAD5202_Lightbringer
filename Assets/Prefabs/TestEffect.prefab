@@ -183,6 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b601a94fdb9d045a7867d8b78c6ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangedDamage: 7
+  rangedDamage: 50
   playerController: {fileID: 0}
   rangedObj: {fileID: 0}

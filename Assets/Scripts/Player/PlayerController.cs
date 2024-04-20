@@ -192,8 +192,6 @@ public class PlayerController : MonoBehaviour
 
     public void HandleRangedAttackCooldown()
     {
-        Debug.Log("ranged cooldown!");
-
         if (rangedAttackInput) { return; }
 
         IsAttacking = false;
