@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1315921145}
   oathTracker: {fileID: 1315921151}
-  meleeDamage: 7
+  meleeDamage: 40
   hitBox: {fileID: 449681853}
 --- !u!61 &449681856
 BoxCollider2D:
@@ -1652,12 +1652,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8290440a039e74976a8139b3fd882f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 1315921145}
+  playerHealth: {fileID: 1315921150}
+  weaponHitBox: {fileID: 449681855}
+  rangedAttack: {fileID: 6114679723614046319, guid: 59e1963a5cc08214781ef932bf732186,
+    type: 3}
   strength: 0
   dexterity: 0
   healthPoints: 0
   intelligence: 0
   wisdom: 0
   haste: 0
+  baseDamageMelee: 40
+  critChance: 0
+  baseHP: 100
+  baseDamageRanged: 50
+  rangedCooldown: 4
+  dodgeCooldown: 1
 --- !u!1 &592288854
 GameObject:
   m_ObjectHideFlags: 0
@@ -8666,8 +8677,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33946785a4361475598ae566b0e4016c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
-  currentPlayerHealth: 1000
+  maxHealth: 100
+  currentPlayerHealth: 100
 --- !u!114 &1315921151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9766,7 +9777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1859200750
 RectTransform:
   m_ObjectHideFlags: 0
