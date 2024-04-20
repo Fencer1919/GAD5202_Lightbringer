@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyAlarmState : EnemyState
 {  
     
-
     public void EnterState(MainEnemy enemy)
     {
         Debug.Log("EnemyAlarm Entered");

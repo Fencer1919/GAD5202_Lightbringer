@@ -5,17 +5,19 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
-    [SerializeField] private float playerHealth;
+    [SerializeField] private float currentPlayerHealth;
 
     private bool isDead;
 
     public bool IsDead { get => isDead; set => isDead = value; }
+    public float MaxHealth { get => maxHealth; set => maxHealth = value; }
+    public float CurrentPlayerHealth { get => currentPlayerHealth; set => currentPlayerHealth = value; }
 
     public void TakeDamage(float damageValue)
     {
-        playerHealth -= damageValue;
+        CurrentPlayerHealth -= damageValue;
 
-        if(playerHealth <= 0)
+        if(CurrentPlayerHealth <= 0)
         {
             Die();
         }

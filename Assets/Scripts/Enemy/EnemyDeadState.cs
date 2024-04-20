@@ -6,16 +6,17 @@ public class EnemyDeadState : EnemyState
 {
     public void EnterState(MainEnemy enemy)
     {
-        throw new System.NotImplementedException();
+        enemy.rb.simulated = false;
+        enemy.enemyHitBox.enabled = false;
     }
 
     public void ExitState(MainEnemy enemy)
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void UpdateState(MainEnemy enemy)
     {
-        throw new System.NotImplementedException();
+
     }
 }

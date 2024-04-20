@@ -6,6 +6,7 @@ public class WeaponHitBox : MonoBehaviour
 {
     [SerializeField] PlayerController player;
     [SerializeField] private PlayerDamageManager playerDamageManager;
+    [SerializeField] private PaladinSpawner paladinSpawner;
 
     [SerializeField] private float meleeDamage;
 
@@ -33,7 +34,14 @@ public class WeaponHitBox : MonoBehaviour
     {
         if(collider.CompareTag("Enemy"))
         {
-            playerDamageManager.DamageEnemy(meleeDamage);
+            collider.GetComponent<EnemyHealth>().TakeDamage(meleeDamage);;
+
+            if (collider.GetComponent<EnemyHealth>().IsDead)
+            {
+                paladinSpawner.SpawnCounter();
+            }
+            
+
         }
     }
 

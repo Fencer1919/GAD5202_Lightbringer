@@ -5,25 +5,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MainEnemy : MonoBehaviour
+public class MainPaladin : MonoBehaviour
 {
     public AIDestinationSetter aIDestinationSetter;
     public AIPath aIPath;
 
-
-
-    public EnemyHealth enemyHealth;
-    public Rigidbody2D rb;
-    public EnemyWeaponHitBox enemyHitBox;
+    public PaladinWeaponHitBox paladinWeaponHitBox;
 
     public float stoppingDistance;
 
     public Animator enemyAnim;
 
 
-    private EnemyState currentEnemyState;
+    private PaladinState currentPaladinState;
 
-    public event Action OnEnemyAttack;
+    public event Action OnPaladinAttack;
 
 
     private bool onAlarmState;
@@ -33,25 +29,24 @@ public class MainEnemy : MonoBehaviour
 
     void Start()
     {
-        currentEnemyState = new EnemyIdleState();
-        currentEnemyState.EnterState(this);
+        currentPaladinState = new PaladinIdleState();
+        currentPaladinState.EnterState(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentEnemyState.UpdateState(this);
-        
+        currentPaladinState.UpdateState(this);
     }
-    public void ChangeState(EnemyState newState)
+    public void ChangeState(PaladinState newState)
     {
-        currentEnemyState.ExitState(this);
-        currentEnemyState = newState;
-        currentEnemyState.EnterState(this);
+        currentPaladinState.ExitState(this);
+        currentPaladinState = newState;
+        currentPaladinState.EnterState(this);
     }
 
     public void HandleEnemyAttack()
     {
-        OnEnemyAttack?.Invoke();
+        OnPaladinAttack?.Invoke();
     }
 }

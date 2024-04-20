@@ -9,6 +9,9 @@ public class RangedAttack : MonoBehaviour
 
     [SerializeField] private PlayerDamageManager playerDamageManager;
 
+    [SerializeField] private float detectionRadius;
+    [SerializeField] private LayerMask targetLayer;
+
     public void DestroyObject()
     {
         Destroy(gameObject);
@@ -17,9 +20,9 @@ public class RangedAttack : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         //damage enemy
-        if(collision.CompareTag("Enemy"))
+        if (collision.TryGetComponent(out EnemyHealth enemy))
         {
-            PlayerDamageManager.instance.DamageEnemy(rangedDamage);
+            enemy.TakeDamage(rangedDamage);
         }
     }
 }

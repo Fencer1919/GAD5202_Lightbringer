@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class PaladinHealth : MonoBehaviour
 {
-    [SerializeField] private float enemyHealthValue;
-
-    public MainEnemy enemy;
-
-
+    [SerializeField] private float paladinHealthValue;
 
     private bool isDead = false;
 
-    public float EnemyHealthValue { get => enemyHealthValue; set => enemyHealthValue = value; }
+    public float PaladinHealthValue { get => paladinHealthValue; set => paladinHealthValue = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
 
     void Start()
@@ -24,9 +20,9 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damageValue)
     {
         Debug.Log("Enemy Damaged!");
-        EnemyHealthValue -= damageValue;
+        PaladinHealthValue -= damageValue;
 
-        if(EnemyHealthValue <= 0)
+        if(PaladinHealthValue <= 0)
         {
             Die();
         }
@@ -36,11 +32,7 @@ public class EnemyHealth : MonoBehaviour
     {
         IsDead = true;
         Destroy(gameObject, 2f);
-        DeadStateActive();
-    }
 
-    public void DeadStateActive()
-    {
-        enemy.ChangeState(new EnemyDeadState());
+        
     }
 }

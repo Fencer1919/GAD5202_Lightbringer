@@ -11,16 +11,16 @@ GameObject:
   - component: {fileID: 4827822859206726802}
   - component: {fileID: 1688373958025671639}
   - component: {fileID: 6636719511649186222}
-  - component: {fileID: 4662040536045063072}
   - component: {fileID: 3534598864061505790}
   - component: {fileID: 4913035896090829363}
   - component: {fileID: 2394803731173452999}
-  - component: {fileID: 3632293154483080543}
   - component: {fileID: 1453120073568936757}
   - component: {fileID: 5838786837458275773}
-  m_Layer: 8
-  m_Name: Enemy
-  m_TagString: Enemy
+  - component: {fileID: 9091372487056660861}
+  - component: {fileID: 1489230545323185477}
+  m_Layer: 10
+  m_Name: Paladin
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 1195939852053261461}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.91, y: 0, z: 0}
+  m_LocalPosition: {x: -9.466621, y: 18.56655, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: -1277934347, guid: 1a4c3b5d1fd10bc49b7b911f708b0196, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8375957, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -115,25 +115,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4662040536045063072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195939852053261461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2767e1a4653e79145b284f448bedb58b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aIDestinationSetter: {fileID: 2394803731173452999}
-  aIPath: {fileID: 4913035896090829363}
-  enemyHealth: {fileID: 3632293154483080543}
-  rb: {fileID: 5838786837458275773}
-  enemyHitBox: {fileID: 2567606506862858932}
-  stoppingDistance: 1.5
-  enemyAnim: {fileID: 6636719511649186222}
 --- !u!114 &3534598864061505790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +180,7 @@ MonoBehaviour:
   rotationSpeed: 0
   slowdownDistance: 0.6
   pickNextWaypointDist: 1.2
-  endReachedDistance: 0
+  endReachedDistance: 3
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -218,20 +199,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
---- !u!114 &3632293154483080543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195939852053261461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cfefc359040e444e97bf2005aab8499, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealthValue: 7
-  enemy: {fileID: 4662040536045063072}
 --- !u!70 &1453120073568936757
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -294,6 +261,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &9091372487056660861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195939852053261461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4156f86acf8f143a7b1bd25e0fb1d425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paladinHealthValue: 10
+--- !u!114 &1489230545323185477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195939852053261461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7863b5c62f384eab97138a302c0555d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aIDestinationSetter: {fileID: 2394803731173452999}
+  aIPath: {fileID: 4913035896090829363}
+  paladinWeaponHitBox: {fileID: 5651463015209448750}
+  stoppingDistance: 1.5
+  enemyAnim: {fileID: 6636719511649186222}
 --- !u!1 &1666633426965501864
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,10 +300,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5189604418523666922}
-  - component: {fileID: 993627324777560975}
-  m_Layer: 11
+  - component: {fileID: 9000879190415365816}
+  m_Layer: 10
   m_Name: DetectionObject
-  m_TagString: EnemyDetection
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -326,7 +323,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4827822859206726802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &993627324777560975
+--- !u!114 &9000879190415365816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -335,18 +332,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666633426965501864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe2c555e5b624124eb787a79efe7f5e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f1a22cdf93c04038a1af5f0f06606be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 256
   ignoreEnemyLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 255
+  playerAndEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 264
   targetGameObject: {fileID: 0}
-  sphereRadius: 6
-  enemy: {fileID: 4662040536045063072}
+  sphereRadius: 15.35
+  paladin: {fileID: 1489230545323185477}
 --- !u!1 &8499810219440376513
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,10 +356,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1043575270753744110}
-  - component: {fileID: 2567606506862858932}
   - component: {fileID: 8058849799521830708}
-  m_Layer: 8
-  m_Name: EnemyWeapon
+  - component: {fileID: 5651463015209448750}
+  m_Layer: 10
+  m_Name: PaladinWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,22 +380,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4827822859206726802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2567606506862858932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8499810219440376513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e60b4ea9ad963c1489a8715791778257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 4662040536045063072}
-  hitBox: {fileID: 8499810219440376513}
-  hitboxCollider: {fileID: 8058849799521830708}
-  enemyDamage: 3
 --- !u!61 &8058849799521830708
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -441,3 +425,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5651463015209448750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8499810219440376513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf0d460729f44967820484ad013460c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paladin: {fileID: 1489230545323185477}
+  hitBox: {fileID: 8499810219440376513}
+  hitboxCollider: {fileID: 8058849799521830708}
+  enemyDamage: 7
