@@ -32,37 +32,37 @@ public class AttributeSystem : MonoBehaviour
     // Setters for attribute points
     public void SetStrength(int value)
     {
-        strength = value;
+        strength += value;
         UpdateAttributes();
     }
 
     public void SetDexterity(int value)
     {
-        dexterity = value;
+        dexterity += value;
         UpdateAttributes();
     }
 
     public void SetHealthPoints(int value)
     {
-        healthPoints = value;
+        healthPoints += value;
         UpdateAttributes();
     }
 
     public void SetIntelligence(int value)
     {
-        intelligence = value;
+        intelligence += value;
         UpdateAttributes();
     }
 
     public void SetWisdom(int value)
     {
-        wisdom = value;
+        wisdom += value;
         UpdateAttributes();
     }
 
     public void SetHaste(int value)
     {
-        haste = value;
+        haste += value;
         UpdateAttributes();
     }
 
