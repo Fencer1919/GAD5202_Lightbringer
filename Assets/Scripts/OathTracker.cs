@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaladinSpawner : MonoBehaviour
+public class OathTracker : MonoBehaviour
 {
     public PlayerHealth playerHealth;
 
@@ -21,8 +21,32 @@ public class PaladinSpawner : MonoBehaviour
     public int damageAmount;
     private float timer;
 
+    public int currentOathValue;
+
+    private static OathTracker _instance;
+
+    // Bu metod, Singleton örneğini döndürür. Eğer örnek yoksa, oluşturur ve döndürür.
+    public static OathTracker Instance
+    {
+        get
+        {
+            // Eğer örnek yoksa, oluştur
+            if (_instance == null)
+            {
+                // Bir GameObject oluştur ve bu sınıfa bağla
+                GameObject singletonObject = new GameObject("SingletonExample");
+                _instance = singletonObject.AddComponent<OathTracker>();
+                DontDestroyOnLoad(singletonObject); // Yeni sahnelerde bu nesnenin yok olmasını engeller
+            }
+            return _instance;
+        }
+    }
+
+
     void Update()
     {
+        Debug.Log(currentOathValue);
+        /*
         if(spawnedPaladinList.Count > maxPaladinCount)
         {
             timer += Time.deltaTime;
@@ -33,6 +57,7 @@ public class PaladinSpawner : MonoBehaviour
                 timer = 0f;
             }
         }
+        */
     }
 
     void DealDamage(int damageAmount)
@@ -50,6 +75,7 @@ public class PaladinSpawner : MonoBehaviour
             count = 0;
         }
     }
+
 
     public void SpawnPaladin()
     {

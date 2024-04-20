@@ -6,7 +6,7 @@ public class WeaponHitBox : MonoBehaviour
 {
     [SerializeField] PlayerController player;
     [SerializeField] private PlayerDamageManager playerDamageManager;
-    [SerializeField] private PaladinSpawner paladinSpawner;
+    [SerializeField] private OathTracker paladinSpawner;
 
     [SerializeField] private float meleeDamage;
 
@@ -38,7 +38,9 @@ public class WeaponHitBox : MonoBehaviour
 
             if (collider.GetComponent<EnemyHealth>().IsDead)
             {
-                paladinSpawner.SpawnCounter();
+                OathTracker.Instance.currentOathValue -= 1;
+
+                Debug.Log(OathTracker.Instance.currentOathValue);
             }
             
 

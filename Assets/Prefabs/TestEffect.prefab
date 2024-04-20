@@ -144,7 +144,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -1.28}
   serializedVersion: 2
-  m_Radius: 4.21
+  m_Radius: 1.21
 --- !u!114 &-2094999777712317983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,8 +163,6 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 1024
-  spawnerTransform: {fileID: 9214161816542164405, guid: 489336fa8598046029092b692c57140f, type: 3}
-  spawnerObj: {fileID: 7229662529056547158, guid: 489336fa8598046029092b692c57140f, type: 3}
 --- !u!120 &-5885316713544504724
 LineRenderer:
   serializedVersion: 2

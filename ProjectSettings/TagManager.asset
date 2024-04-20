@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Enemy
   - HolyLayer
+  - PlayerHitBox
   layers:
   - Default
   - TransparentFX

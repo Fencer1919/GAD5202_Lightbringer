@@ -23,6 +23,14 @@ public class RangedAttack : MonoBehaviour
         if (collision.TryGetComponent(out EnemyHealth enemy))
         {
             enemy.TakeDamage(rangedDamage);
+
+            if (collision.GetComponent<EnemyHealth>().IsDead)
+            {
+                OathTracker.Instance.currentOathValue += 1;
+
+                Debug.Log(OathTracker.Instance.currentOathValue);
+            }
+
         }
     }
 }
