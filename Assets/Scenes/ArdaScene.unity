@@ -9211,7 +9211,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   oathTracker: {fileID: 0}
   maxHealth: 100
-  currentPlayerHealth: 5
+  currentPlayerHealth: 100
 --- !u!114 &1315921151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10702,17 +10702,17 @@ PrefabInstance:
     - target: {fileID: 4827822859206726802, guid: eabf51cbe2372184a9728784e333b1e4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827822859206726802, guid: eabf51cbe2372184a9728784e333b1e4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827822859206726802, guid: eabf51cbe2372184a9728784e333b1e4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827822859206726802, guid: eabf51cbe2372184a9728784e333b1e4,
         type: 3}

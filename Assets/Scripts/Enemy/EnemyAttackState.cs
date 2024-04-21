@@ -16,6 +16,8 @@ public class EnemyAttackState : EnemyState
 
         enemy.StartCoroutine(EnemyAttack(enemy));
 
+        enemy.enemyAnim.SetBool("isAttacking", true);
+
 
     }
 
@@ -25,7 +27,9 @@ public class EnemyAttackState : EnemyState
 
         enemy.enemyHitBox.HitboxCollider.enabled = false;
 
-        enemy.aIPath.maxSpeed = 4;        
+        enemy.aIPath.maxSpeed = 4;    
+
+        enemy.enemyAnim.SetBool("isAttacking", false);    
 
     }
 

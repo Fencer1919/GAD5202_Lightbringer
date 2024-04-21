@@ -8,6 +8,8 @@ public class EnemyDeadState : EnemyState
     {
         enemy.rb.simulated = false;
         enemy.enemyHitBox.enabled = false;
+
+        enemy.enemyAnim.SetBool("isDead", true);
     }
 
     public void ExitState(MainEnemy enemy)
