@@ -31,12 +31,12 @@ public class EnemyWeaponHitBox : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("PaladinHitBox"))
+        if (collision.CompareTag("Paladin"))
         {
             collision.GetComponent<PaladinHealth>().TakeDamage(enemyDamage);
         }
 
-        else if (collision.CompareTag("PlayerHitBox"))
+        else if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(enemyDamage);
         }

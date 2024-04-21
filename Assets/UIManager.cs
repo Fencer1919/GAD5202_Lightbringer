@@ -6,15 +6,33 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {   
+    public static UIManager Instance;
+
     public GameObject AttributeTab;
 
     public Button[] attributeButtons;
 
+    public Slider healthBar;
+
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else
+        Destroy(gameObject);
+
         PlayerController.onToggleAttributeTab += ToggleAttributeTab;
         AttributeSystem.noAttributePoints += NoAttributePoints;
         LevelSystem.onLevelUp += OnLevelUp;
+    }
+
+    void Update()
+    {
+        healthBar.value = Mathf.Clamp01(PlayerController.Instance.playerHealth.CurrentPlayerHealth); 
+    }
+
+    public void SetHealthBar(float healthAmount)
+    {
+        healthBar.value = healthAmount;
     }
 
     private void OnLevelUp()

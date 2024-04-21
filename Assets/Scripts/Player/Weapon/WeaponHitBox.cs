@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class WeaponHitBox : MonoBehaviour
     private Vector2 hitBoxDirection;
     private Transform aimTransform;
 
+    public static event Action onEnemyKilledMelee;
+
     public float MeleeDamage { get => meleeDamage; set => meleeDamage = value; }
 
     private void Start()
@@ -20,8 +23,19 @@ public class WeaponHitBox : MonoBehaviour
         aimTransform = GetComponent<Transform>();
 
         player.onAttack += Player_onAttack;
-        
+        OathTracker.onOathBreak += OnOathBreak;
+    }
 
+    private void OnOathBreak()
+    {
+        if(oathTracker.isOathBroken)
+        {
+            meleeDamage *= 2;
+        }
+        else
+        {
+            meleeDamage /= 2;
+        }
     }
 
     private void Player_onAttack()
@@ -39,7 +53,9 @@ public class WeaponHitBox : MonoBehaviour
 
             if (collider.GetComponent<EnemyHealth>().IsDead)
             {
-                oathTracker.currentOathValue -= 1;
+                //oathTracker.currentOathValue -= 1;
+
+                onEnemyKilledMelee?.Invoke();
             }
             
 

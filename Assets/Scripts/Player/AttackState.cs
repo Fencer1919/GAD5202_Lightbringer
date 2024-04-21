@@ -19,7 +19,7 @@ public class AttackState : IState
         }
         else if (player.rangedAttackInput)
         {
-            player.Anim.SetBool("isAttackingRanged", true);
+            player.Anim.SetBool("isSmiting", true);
         }
 
 
@@ -32,7 +32,7 @@ public class AttackState : IState
         player.PlayerWeapon.SetActive(false);
 
         player.Anim.SetBool("isAttackingMelee", false);
-        player.Anim.SetBool("isAttackingRanged", false);
+        player.Anim.SetBool("isSmiting", false);
 
     }
 

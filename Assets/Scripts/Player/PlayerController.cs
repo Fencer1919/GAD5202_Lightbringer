@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
+    public PlayerHealth playerHealth;
+    public Rigidbody2D rb;
+
     private bool isWalking;
     private bool isDodging;
     private bool isAttacking;
@@ -105,12 +108,14 @@ public class PlayerController : MonoBehaviour
         currentState.EnterState(this);
 
         Anim.SetFloat("attackSpeed", attackRate);
-
     }
     
     void Update()
     {
         currentState.UpdateState(this);
+
+        Debug.Log(currentState);
+        Debug.Log(IsAttacking);
     }
 
     public void ChangeState(IState newState)
@@ -183,11 +188,9 @@ public class PlayerController : MonoBehaviour
 
     public void HandleRangedAttack()
     {
-        Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 10;
+        Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 10 + Vector3.up * 1.2f;
 
         rangedObj = Instantiate(rangedAttackObject, spawnPosition, Quaternion.identity);
-
-
     }
 
     public void HandleRangedAttackCooldown()

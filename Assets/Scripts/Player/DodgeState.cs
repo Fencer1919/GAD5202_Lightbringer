@@ -6,12 +6,12 @@ public class DodgeState : IState
 {   
     public void EnterState(PlayerController player)
     {
-
+        player.Anim.SetBool("isDodging", true);
     }
 
     public void ExitState(PlayerController player)
     {
-
+        player.Anim.SetBool("isDodging", false);
     }
 
     public void UpdateState(PlayerController player)

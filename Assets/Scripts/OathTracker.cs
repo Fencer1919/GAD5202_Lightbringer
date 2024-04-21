@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -26,37 +27,46 @@ public class OathTracker : MonoBehaviour
 
     public TMP_Text text;
 
+    public bool isPaladinSpawned = false;
+    public bool isOathBroken = false;
+
+    public static Action onOathBreak;
+
     void Awake()
     {
         RangedAttack.onEnemyKilled += OnEnemyKilled;
+        WeaponHitBox.onEnemyKilledMelee += OnEnemyKilledMelee;
+    }
+
+    private void OnEnemyKilledMelee()
+    {
+        currentOathValue -= 1;
+
+        if(currentOathValue <= -5 && !isOathBroken)
+        {
+            onOathBreak.Invoke();
+
+            isOathBroken = true;
+        }
     }
 
     public void OnEnemyKilled()
     {
         currentOathValue += 1;
+
+        if(currentOathValue >= 5 && !isPaladinSpawned)
+        {
+            SpawnPaladin();
+
+            isPaladinSpawned = true;
+
+            onOathBreak.Invoke();
+        }
     }
 
     void Update()
     {
         text.text = currentOathValue.ToString();
-        Debug.Log(currentOathValue);
-        /*
-        if(spawnedPaladinList.Count > maxPaladinCount)
-        {
-            timer += Time.deltaTime;
-
-            if(timer >= damageInterval)
-            {
-                DealDamage(damageAmount);
-                timer = 0f;
-            }
-        }
-        */
-    }
-
-    void DealDamage(int damageAmount)
-    {
-        playerHealth.CurrentPlayerHealth -= damageAmount;
     }
 
     public void SpawnCounter()
@@ -69,7 +79,6 @@ public class OathTracker : MonoBehaviour
             count = 0;
         }
     }
-
 
     public void SpawnPaladin()
     {

@@ -33,5 +33,9 @@ public class IdleState : IState
         {
             player.ChangeState(new AttackState());
         }
+        else if(player.playerHealth.IsDead)
+        {
+            player.ChangeState(new DeadState());
+        }
     }
 }

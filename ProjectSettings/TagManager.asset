@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle
+  - PlayerHitBox
+  - PaladinHitBox
+  - Enemy
+  - EnemyDetection
+  - Paladin
   layers:
   - Default
   - TransparentFX
