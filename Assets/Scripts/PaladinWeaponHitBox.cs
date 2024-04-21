@@ -19,10 +19,10 @@ public class PaladinWeaponHitBox : MonoBehaviour
     {
         aimTransform = GetComponent<Transform>();
 
-        paladin.OnPaladinAttack += Enemy_OnEnemyAttack;
+        paladin.OnPaladinAttack += OnPaladinAttack;
 
     }
-    private void Enemy_OnEnemyAttack()
+    private void OnPaladinAttack()
     {
         hitBoxDirection = (paladin.aIDestinationSetter.target.transform.position - transform.position).normalized;
         float angle = Mathf.Atan2(hitBoxDirection.y, hitBoxDirection.x) * Mathf.Rad2Deg;

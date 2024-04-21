@@ -17,6 +17,8 @@ public class OathTracker : MonoBehaviour
 
     public GameObject paladin;
 
+    public GameObject oathbreakFilter;
+
     public List<GameObject> spawnedPaladinList;
 
     public int damageInterval;
@@ -29,6 +31,8 @@ public class OathTracker : MonoBehaviour
 
     public bool isPaladinSpawned = false;
     public bool isOathBroken = false;
+
+
 
     public static Action onOathBreak;
 
@@ -47,6 +51,9 @@ public class OathTracker : MonoBehaviour
             onOathBreak.Invoke();
 
             isOathBroken = true;
+
+            oathbreakFilter.SetActive(true);
+
         }
     }
 
@@ -66,7 +73,7 @@ public class OathTracker : MonoBehaviour
 
     void Update()
     {
-        text.text = currentOathValue.ToString();
+        text.text = "Divine Favor " + currentOathValue.ToString();
     }
 
     public void SpawnCounter()

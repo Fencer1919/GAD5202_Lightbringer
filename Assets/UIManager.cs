@@ -25,11 +25,6 @@ public class UIManager : MonoBehaviour
         LevelSystem.onLevelUp += OnLevelUp;
     }
 
-    void Update()
-    {
-        healthBar.value = Mathf.Clamp01(PlayerController.Instance.playerHealth.CurrentPlayerHealth); 
-    }
-
     public void SetHealthBar(float healthAmount)
     {
         healthBar.value = healthAmount;

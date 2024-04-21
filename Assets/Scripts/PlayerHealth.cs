@@ -25,11 +25,11 @@ public class PlayerHealth : MonoBehaviour
     {
         if(oathTracker.isOathBroken)
         {
-            currentPlayerHealth /= 2;
+            currentPlayerHealth *= 2;
         }
         else
         {
-            currentPlayerHealth *= 2;
+            currentPlayerHealth /= 2;
         }
     }
 

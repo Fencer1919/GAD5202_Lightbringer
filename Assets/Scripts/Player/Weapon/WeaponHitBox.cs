@@ -30,11 +30,11 @@ public class WeaponHitBox : MonoBehaviour
     {
         if(oathTracker.isOathBroken)
         {
-            meleeDamage *= 2;
+            meleeDamage /= 2;
         }
         else
         {
-            meleeDamage /= 2;
+            meleeDamage *= 2;
         }
     }
 
@@ -49,7 +49,9 @@ public class WeaponHitBox : MonoBehaviour
     {
         if(collider.CompareTag("Enemy"))
         {
-            collider.GetComponent<EnemyHealth>().TakeDamage(MeleeDamage);;
+            if(collider.GetComponent<EnemyHealth>() != null)
+            {
+                collider.GetComponent<EnemyHealth>().TakeDamage(MeleeDamage);
 
             if (collider.GetComponent<EnemyHealth>().IsDead)
             {
@@ -57,6 +59,7 @@ public class WeaponHitBox : MonoBehaviour
 
                 onEnemyKilledMelee?.Invoke();
             }
+            }            
             
 
         }

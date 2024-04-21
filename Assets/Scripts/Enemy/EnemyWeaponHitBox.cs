@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,11 @@ public class EnemyWeaponHitBox : MonoBehaviour
     private Vector2 hitBoxDirection;
     private Transform aimTransform;
 
+    [SerializeField] private GameObject bullet;
+
     [SerializeField] private float enemyDamage;
+
+    //public static event Action onBulletFired;
 
     public Collider2D HitboxCollider { get => hitboxCollider; set => hitboxCollider = value; }
 
@@ -24,9 +29,17 @@ public class EnemyWeaponHitBox : MonoBehaviour
     }
     private void Enemy_OnEnemyAttack()
     {
-        hitBoxDirection = (enemy.aIDestinationSetter.target.transform.position - transform.position).normalized;
-        float angle = Mathf.Atan2(hitBoxDirection.y, hitBoxDirection.x) * Mathf.Rad2Deg;
-        aimTransform.eulerAngles = new Vector3(0, 0, angle);
+        if(!enemy.IsRangedEnemy)
+        {
+            hitBoxDirection = (enemy.aIDestinationSetter.target.transform.position - transform.position).normalized;
+            float angle = Mathf.Atan2(hitBoxDirection.y, hitBoxDirection.x) * Mathf.Rad2Deg;
+            aimTransform.eulerAngles = new Vector3(0, 0, angle);
+        }
+        else
+        {
+            //Instantiate(bullet, transform.position, Quaternion.identity);
+        }
+
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

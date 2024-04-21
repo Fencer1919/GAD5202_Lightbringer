@@ -20,7 +20,8 @@ public class PaladinAlarmState : PaladinState
     public void UpdateState(MainPaladin paladin)
     {
         if (paladin.aIDestinationSetter.target != null 
-            && (paladin.aIDestinationSetter.target.position - paladin.transform.position).magnitude < paladin.stoppingDistance)
+            && (paladin.aIDestinationSetter.target.position - paladin.transform.position).magnitude < paladin.stoppingDistance 
+            && !paladin.aIDestinationSetter.target.CompareTag("Player"))
         {   
             Debug.Log("PALADIN STOPPING DISTANCE");
 

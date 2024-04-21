@@ -8,14 +8,10 @@ public class EnemyDetection : MonoBehaviour
     [Header("Detection")]
     [SerializeField] LayerMask targetLayer;
     [SerializeField] LayerMask ignoreEnemyLayerMask;
-    [SerializeField] GameObject targetGameObject;
+    [SerializeField] public GameObject targetGameObject;
     [SerializeField] private float sphereRadius;
 
-
-
-
     private Collider2D detectionCollider;
-
 
     [Header("Reference")]
     [SerializeField] private MainEnemy enemy;
@@ -65,8 +61,6 @@ public class EnemyDetection : MonoBehaviour
         RaycastHit2D hit;
 
         hit = Physics2D.Linecast(transform.position, targetGameObject.transform.position, ignoreEnemyLayerMask);
-
-        Debug.Log(hit.collider.name);
 
         if (hit.collider.CompareTag("Obstacle"))
         {

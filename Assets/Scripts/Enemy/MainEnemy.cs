@@ -10,12 +10,11 @@ public class MainEnemy : MonoBehaviour
     public AIDestinationSetter aIDestinationSetter;
     public AIPath aIPath;
 
-
-
     public EnemyHealth enemyHealth;
     public Rigidbody2D rb;
     public EnemyWeaponHitBox enemyHitBox;
 
+    public float rangedStoppingDistance;
     public float stoppingDistance;
 
     public Animator enemyAnim;
@@ -25,11 +24,14 @@ public class MainEnemy : MonoBehaviour
 
     public event Action OnEnemyAttack;
 
+    public bool isRangedEnemy;
+
 
     private bool onAlarmState;
     private bool onAttackState;
     public bool OnAlarmState { get => onAlarmState; set => onAlarmState = value; }
     public bool OnAttackState { get => onAttackState; set => onAttackState = value; }
+    public bool IsRangedEnemy { get => isRangedEnemy; set => isRangedEnemy = value; }
 
     void Start()
     {

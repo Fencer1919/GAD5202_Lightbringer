@@ -6,11 +6,13 @@ public class EnemyAttackState : EnemyState
 {
     public void EnterState(MainEnemy enemy)
     {
-        Debug.Log("enemyAttacked");
 
         enemy.aIPath.maxSpeed = 0;
 
-        enemy.enemyHitBox.HitboxCollider.enabled = true;
+        if(enemy.enemyHitBox.HitboxCollider != null)
+        {
+            enemy.enemyHitBox.HitboxCollider.enabled = true;
+        }
 
         enemy.HandleEnemyAttack();
 
@@ -19,13 +21,18 @@ public class EnemyAttackState : EnemyState
         enemy.enemyAnim.SetBool("isAttacking", true);
 
 
+
+
     }
 
     public void ExitState(MainEnemy enemy)
     {
         Debug.Log("enemyAttack finished");
 
-        enemy.enemyHitBox.HitboxCollider.enabled = false;
+        if(enemy.enemyHitBox.HitboxCollider != null)
+        {
+            enemy.enemyHitBox.HitboxCollider.enabled = false;
+        }
 
         enemy.aIPath.maxSpeed = 4;    
 
