@@ -22,7 +22,7 @@ public class WeaponHitBox : MonoBehaviour
     {
         aimTransform = GetComponent<Transform>();
 
-        player.onAttack += Player_onAttack;
+        AttackState.onAttack += Player_onAttack;
         OathTracker.onOathBreak += OnOathBreak;
     }
 

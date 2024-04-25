@@ -6,8 +6,12 @@ public class EnemyDeadState : EnemyState
 {
     public void EnterState(MainEnemy enemy)
     {
-        enemy.rb.simulated = false;
-        enemy.enemyHitBox.enabled = false;
+        if (enemy.enemyHealth.IsDead)
+        {
+            enemy.StopAllCoroutines();
+        }
+
+        enemy.aIPath.maxSpeed = 0;
 
         enemy.enemyAnim.SetBool("isDead", true);
     }

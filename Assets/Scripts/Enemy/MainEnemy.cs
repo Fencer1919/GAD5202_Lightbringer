@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class MainEnemy : MonoBehaviour
 {
-    public AIDestinationSetter aIDestinationSetter;
+    public CharacterDetection characterDetection;
     public AIPath aIPath;
 
     public EnemyHealth enemyHealth;

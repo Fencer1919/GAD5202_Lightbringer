@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,16 @@ public class AttackState : IState
     private float nextMeleeAttackTime = 0f;
 
     private float rangedAttackTime = 0f;
-    
+
+
+    [Header("HandleAttack")]
+    public float attackRate = 1f;
+    public float rangedAttackRate = 1;
+
+    public GameObject rangedObj;
+
+    public static event Action onAttack;
+
     public void EnterState(PlayerController player)
     {
         player.MovementSpeed = 1.5f;
@@ -19,10 +29,10 @@ public class AttackState : IState
         }
         else if (player.rangedAttackInput)
         {
+            player.MovementSpeed = 0f;
+
             player.Anim.SetBool("isSmiting", true);
         }
-
-
     }
 
     public void ExitState(PlayerController player)
@@ -59,8 +69,8 @@ public class AttackState : IState
 
             Debug.Log("attack!");
 
-            player.HandleMeleeAttack();
-            nextMeleeAttackTime = Time.time + 1f / player.attackRate;            
+            HandleMeleeAttack();
+            nextMeleeAttackTime = Time.time + 1f / attackRate;            
         }
 
         //Ranged HandleAttack
@@ -76,9 +86,9 @@ public class AttackState : IState
                 player.Anim.SetBool("isLookingRight", false);
             }
 
-            player.HandleRangedAttack();
+            HandleRangedAttack(player);
 
-            rangedAttackTime = Time.time + 1f / player.rangedAttackRate;
+            rangedAttackTime = Time.time + 1f / rangedAttackRate;
         }
 
         if (!player.IsAttacking)
@@ -86,5 +96,16 @@ public class AttackState : IState
             player.ChangeState(new IdleState());
         }
     }
+    public void HandleMeleeAttack()
+    {
+        onAttack?.Invoke();
+    }
 
+    public void HandleRangedAttack(PlayerController player)
+    {
+        Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) 
+            + Vector3.forward * 10 + Vector3.up * 1.2f;
+
+        rangedObj = UnityEngine.Object.Instantiate(player.rangedAttackObject, spawnPosition, Quaternion.identity);
+    }
 }

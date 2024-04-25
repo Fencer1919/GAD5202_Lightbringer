@@ -16,8 +16,6 @@ public class EnemyWeaponHitBox : MonoBehaviour
 
     [SerializeField] private float enemyDamage;
 
-    //public static event Action onBulletFired;
-
     public Collider2D HitboxCollider { get => hitboxCollider; set => hitboxCollider = value; }
 
     void Start()
@@ -29,17 +27,9 @@ public class EnemyWeaponHitBox : MonoBehaviour
     }
     private void Enemy_OnEnemyAttack()
     {
-        if(!enemy.IsRangedEnemy)
-        {
-            hitBoxDirection = (enemy.aIDestinationSetter.target.transform.position - transform.position).normalized;
-            float angle = Mathf.Atan2(hitBoxDirection.y, hitBoxDirection.x) * Mathf.Rad2Deg;
-            aimTransform.eulerAngles = new Vector3(0, 0, angle);
-        }
-        else
-        {
-            //Instantiate(bullet, transform.position, Quaternion.identity);
-        }
-
+        hitBoxDirection = (enemy.aIPath.destination - transform.position).normalized;
+        float angle = Mathf.Atan2(hitBoxDirection.y, hitBoxDirection.x) * Mathf.Rad2Deg;
+        aimTransform.eulerAngles = new Vector3(0, 0, angle);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

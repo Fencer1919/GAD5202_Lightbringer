@@ -9,12 +9,12 @@ public class PaladinAlarmState : PaladinState
     {
         Debug.Log("EnemyAlarm Entered");
 
-        paladin.enemyAnim.SetBool("isWalking", true);
+        paladin.companionAnim.SetBool("isWalking", true);
     }
 
     public void ExitState(MainPaladin paladin)
     {
-        paladin.enemyAnim.SetBool("isWalking", false);
+        paladin.companionAnim.SetBool("isWalking", false);
     }
 
     public void UpdateState(MainPaladin paladin)

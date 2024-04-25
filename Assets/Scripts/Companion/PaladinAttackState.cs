@@ -16,7 +16,7 @@ public class PaladinAttackState : PaladinState
 
         paladin.StartCoroutine(EnemyAttack(paladin));
 
-        paladin.enemyAnim.SetBool("isAttacking", true);
+        paladin.companionAnim.SetBool("isAttacking", true);
 
 
     }
@@ -28,7 +28,7 @@ public class PaladinAttackState : PaladinState
 
         paladin.aIPath.maxSpeed = 4;      
 
-        paladin.enemyAnim.SetBool("isAttacking", false);  
+        paladin.companionAnim.SetBool("isAttacking", false);  
 
     }
 

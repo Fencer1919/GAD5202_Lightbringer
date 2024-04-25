@@ -9,11 +9,6 @@ public class EnemyAttackState : EnemyState
 
         enemy.aIPath.maxSpeed = 0;
 
-        if(enemy.enemyHitBox.HitboxCollider != null)
-        {
-            enemy.enemyHitBox.HitboxCollider.enabled = true;
-        }
-
         enemy.HandleEnemyAttack();
 
         enemy.StartCoroutine(EnemyAttack(enemy));
@@ -28,11 +23,6 @@ public class EnemyAttackState : EnemyState
     public void ExitState(MainEnemy enemy)
     {
         Debug.Log("enemyAttack finished");
-
-        if(enemy.enemyHitBox.HitboxCollider != null)
-        {
-            enemy.enemyHitBox.HitboxCollider.enabled = false;
-        }
 
         enemy.aIPath.maxSpeed = 4;    
 

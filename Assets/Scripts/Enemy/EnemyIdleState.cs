@@ -16,7 +16,7 @@ public class EnemyIdleState : EnemyState
 
     public void UpdateState(MainEnemy enemy)
     {
-        if (enemy.OnAlarmState)
+        if (enemy.characterDetection.isAlarmed)
         {
             enemy.ChangeState(new EnemyAlarmState());
         }

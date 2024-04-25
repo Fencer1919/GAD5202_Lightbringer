@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4662040536045063072}
   - component: {fileID: 3534598864061505790}
   - component: {fileID: 4913035896090829363}
-  - component: {fileID: 2394803731173452999}
   - component: {fileID: 3632293154483080543}
   - component: {fileID: 1453120073568936757}
   - component: {fileID: 5838786837458275773}
@@ -128,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2767e1a4653e79145b284f448bedb58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aIDestinationSetter: {fileID: 2394803731173452999}
+  characterDetection: {fileID: 3954364763109889374}
   aIPath: {fileID: 4913035896090829363}
   enemyHealth: {fileID: 3632293154483080543}
   rb: {fileID: 5838786837458275773}
@@ -202,25 +201,11 @@ MonoBehaviour:
   rotationSpeed: 0
   slowdownDistance: 0.6
   pickNextWaypointDist: 1.2
-  endReachedDistance: 0
+  endReachedDistance: 1.5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
---- !u!114 &2394803731173452999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195939852053261461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 0}
 --- !u!114 &3632293154483080543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,9 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthValue: 60
-  rangedEnemyHealthValue: 0
-  enemyMeleeExperience: 100
-  rangedEnemyExperience: 0
+  enemyExperience: 100
   enemy: {fileID: 4662040536045063072}
 --- !u!70 &1453120073568936757
 CapsuleCollider2D:
@@ -309,7 +292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5189604418523666922}
-  - component: {fileID: 993627324777560975}
+  - component: {fileID: 3954364763109889374}
   m_Layer: 7
   m_Name: DetectionObject
   m_TagString: EnemyDetection
@@ -332,7 +315,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4827822859206726802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &993627324777560975
+--- !u!114 &3954364763109889374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,18 +324,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666633426965501864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe2c555e5b624124eb787a79efe7f5e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 981faa431d09c2341b791f773e11ac71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetLayer:
     serializedVersion: 2
     m_Bits: 320
-  ignoreEnemyLayerMask:
+  obstacleLayer:
     serializedVersion: 2
     m_Bits: 887
   targetGameObject: {fileID: 0}
-  sphereRadius: 8.2
-  enemy: {fileID: 4662040536045063072}
+  sphereRadius: 6.02
+  aIPath: {fileID: 4913035896090829363}
+  anim: {fileID: 6636719511649186222}
+  isAlarmed: 0
 --- !u!1 &4114301625339773274
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8435454027139215234}
   - component: {fileID: 6404057143673927706}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

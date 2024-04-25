@@ -6,7 +6,7 @@ public class PaladinIdleState : PaladinState
 {
     public void EnterState(MainPaladin paladin)
     {
-        Debug.Log("Entered Enemy Idle");
+
     }
 
     public void ExitState(MainPaladin paladin)

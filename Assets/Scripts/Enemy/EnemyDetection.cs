@@ -16,12 +16,12 @@ public class EnemyDetection : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private MainEnemy enemy;
 
+    /*
     void Update()
     {
         PlayerDetection();
         CheckFacingRight();
     }
-
     private void CheckFacingRight()
     {
         if(enemy.aIDestinationSetter.target != null && (enemy.aIDestinationSetter.target.position - enemy.transform.position).x <= 0)
@@ -78,4 +78,5 @@ public class EnemyDetection : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sphereRadius);
 
     }
+    */
 }

@@ -26,11 +26,11 @@ public class PaladinEnemyDetection : MonoBehaviour
     {
         if(paladin.aIDestinationSetter.target != null && (paladin.aIDestinationSetter.target.position - paladin.transform.position).x <= 0)
             {
-                paladin.enemyAnim.SetBool("facingRight", false);
+                paladin.companionAnim.SetBool("facingRight", false);
             }
             else
             {
-                paladin.enemyAnim.SetBool("facingRight", true);
+                paladin.companionAnim.SetBool("facingRight", true);
             }
     }
 

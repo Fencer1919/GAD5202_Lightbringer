@@ -6,34 +6,22 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float enemyHealthValue;
-    [SerializeField] private float rangedEnemyHealthValue;
 
 
-    public int enemyMeleeExperience;
-    [SerializeField] private int rangedEnemyExperience;
+    [SerializeField] private int enemyExperience;
 
     public MainEnemy enemy;
 
     public static event Action<int> onEnemyDeath;
 
-
-
     private bool isDead = false;
 
     public float EnemyHealthValue { get => enemyHealthValue; set => enemyHealthValue = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
-    public int RangedEnemyExperience { get => rangedEnemyExperience; set => rangedEnemyExperience = value; }
-
-    void Start()
-    {
-        PlayerDamageManager.EnemyDamaged += TakeDamage;
-    }
-
 
     public void TakeDamage(float damageValue)
     {
-        Debug.Log("Enemy Damaged!");
-        
+        Debug.Log("Enemy Damaged!");        
 
         EnemyHealthValue -= damageValue;
 
@@ -49,15 +37,7 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject, 2f);
         DeadStateActive();
 
-        if(!enemy.IsRangedEnemy)
-        {
-            onEnemyDeath?.Invoke(enemyMeleeExperience);
-        }
-        else
-        {
-            onEnemyDeath?.Invoke(rangedEnemyExperience);
-        }
-
+        onEnemyDeath?.Invoke(enemyExperience);
     }
 
     public void DeadStateActive()

@@ -28,28 +28,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject playerWeapon;
 
     [Header("Movement")]
-    private Vector2 movementVector;
+    [HideInInspector] public Vector2 movementVector;
     [SerializeField] private float movementSpeed;
 
-    [Header("Dash/Dodge")]
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashDuration;
-    private Vector2 dashDirection;
-
-    [Header("HandleAttack")]
-    public float attackRate;
-    public float rangedAttackRate;
-
-    public GameObject rangedObj;
-
+    [Header("Attack")]
     public GameObject rangedAttackObject;
+
 
     private IState currentState;
     [Header("Input")]
     [SerializeField] private PlayerInputAction playerInputAction;
     [SerializeField] private PlayerInput playerInput;
 
-    public event Action onAttack;
+
     public static event Action onToggleAttributeTab;
 
     //Properties
@@ -100,6 +91,8 @@ public class PlayerController : MonoBehaviour
 
         playerInputAction.Gameplay.RangedAttack.performed -= RangedAttack;
         playerInputAction.Gameplay.RangedAttack.canceled -= RangedAttack;
+
+        playerInputAction.Gameplay.AttributeTab.started -= AttributeTab;
     }
 
     void Start()
@@ -107,7 +100,7 @@ public class PlayerController : MonoBehaviour
         currentState = new IdleState();
         currentState.EnterState(this);
 
-        Anim.SetFloat("attackSpeed", attackRate);
+        Anim.SetFloat("attackSpeed", new AttackState().attackRate);
     }
     
     void Update()
@@ -124,7 +117,6 @@ public class PlayerController : MonoBehaviour
         currentState = newState;
         currentState.EnterState(this);
     }
-
     public void HandleMovement()
     {        
         transform.Translate(Time.deltaTime * MovementVector * MovementSpeed);
@@ -135,20 +127,9 @@ public class PlayerController : MonoBehaviour
         
         MovementVector = context.ReadValue<Vector2>();
     }
-
     private void Dodge(InputAction.CallbackContext context)
     {
         IsDodging = true;
-        dashDirection = MovementVector;
-    }
-
-    public IEnumerator HandleDodge()
-    {        
-        transform.Translate(Time.deltaTime * dashDirection * dashSpeed);
-
-        yield return new WaitForSeconds(dashDuration);
-
-        IsDodging = false;
     }
     private void MeleeAttack(InputAction.CallbackContext context)
     {
@@ -158,21 +139,7 @@ public class PlayerController : MonoBehaviour
         {
             IsAttacking = true;
         }
-
-
     }
-    public void HandleMeleeAttack()
-    {
-        onAttack?.Invoke();
-    }
-
-    public void HandleAttackCooldown()
-    {
-        if (meleeAttackInput) { return; }
-
-        IsAttacking = false;
-    }
-
     private void RangedAttack(InputAction.CallbackContext context)
     {
         Invoke("HandleRangedAttackCooldown", 1f);
@@ -183,21 +150,6 @@ public class PlayerController : MonoBehaviour
         {
             IsAttacking = true;
         }
-
-    }
-
-    public void HandleRangedAttack()
-    {
-        Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 10 + Vector3.up * 1.2f;
-
-        rangedObj = Instantiate(rangedAttackObject, spawnPosition, Quaternion.identity);
-    }
-
-    public void HandleRangedAttackCooldown()
-    {
-        if (rangedAttackInput) { return; }
-
-        IsAttacking = false;
     }
 
     private void AttributeTab(InputAction.CallbackContext context)
@@ -212,6 +164,19 @@ public class PlayerController : MonoBehaviour
         }
 
         onToggleAttributeTab?.Invoke();
+    }
+
+    public void HandleAttackCooldown()
+    {
+        if (meleeAttackInput) { return; }
+
+        IsAttacking = false;
+    }
+    public void HandleRangedAttackCooldown()
+    {
+        if (rangedAttackInput) { return; }
+
+        IsAttacking = false;
     }
 
 }

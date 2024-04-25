@@ -19,27 +19,14 @@ public class EnemyAlarmState : EnemyState
 
     public void UpdateState(MainEnemy enemy)
     {
-        if(!enemy.isRangedEnemy)
+        if (enemy.aIPath.destination != null 
+        && (enemy.aIPath.destination - enemy.transform.position).magnitude < enemy.aIPath.endReachedDistance)
         {
-            if (enemy.aIDestinationSetter.target != null 
-            && (enemy.aIDestinationSetter.target.position - enemy.transform.position).magnitude < enemy.stoppingDistance)
-            {
-                enemy.OnAttackState = true;
-                enemy.ChangeState(new EnemyAttackState());
-            }
-        }
-        else
-        {
-            if (enemy.aIDestinationSetter.target != null 
-            && (enemy.aIDestinationSetter.target.position - enemy.transform.position).magnitude < enemy.rangedStoppingDistance)
-            {
-                enemy.OnAttackState = true;
-                enemy.ChangeState(new EnemyAttackState());
-            }
+            enemy.OnAttackState = true;
+            enemy.ChangeState(new EnemyAttackState());
         }
 
-
-        if (!enemy.OnAlarmState && !enemy.OnAttackState)
+        if (!enemy.characterDetection.isAlarmed && !enemy.OnAttackState)
         {
             enemy.ChangeState(new EnemyIdleState());
         }

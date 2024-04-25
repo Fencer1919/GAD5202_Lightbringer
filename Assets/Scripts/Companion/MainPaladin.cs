@@ -14,7 +14,7 @@ public class MainPaladin : MonoBehaviour
 
     public float stoppingDistance;
 
-    public Animator enemyAnim;
+    public Animator companionAnim;
 
 
     private PaladinState currentPaladinState;

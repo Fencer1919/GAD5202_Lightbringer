@@ -28,7 +28,6 @@ public class WalkState : IState
         }
 
 
-
         if (!player.IsWalking)
         {
             player.ChangeState(new IdleState());
