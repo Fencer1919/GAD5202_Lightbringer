@@ -131,6 +131,7 @@ MonoBehaviour:
   aIPath: {fileID: 4913035896090829363}
   enemyHealth: {fileID: 3632293154483080543}
   rb: {fileID: 5838786837458275773}
+  hurtBox: {fileID: 1453120073568936757}
   enemyHitBox: {fileID: 2567606506862858932}
   rangedStoppingDistance: 0
   stoppingDistance: 1.5
@@ -218,7 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cfefc359040e444e97bf2005aab8499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealthValue: 60
+  maxHealth: 50
+  currentHealth: 50
   enemyExperience: 100
   enemy: {fileID: 4662040536045063072}
 --- !u!70 &1453120073568936757

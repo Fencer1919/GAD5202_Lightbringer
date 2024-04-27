@@ -106,6 +106,6 @@ public class AttackState : IState
         Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) 
             + Vector3.forward * 10 + Vector3.up * 1.2f;
 
-        rangedObj = UnityEngine.Object.Instantiate(player.rangedAttackObject, spawnPosition, Quaternion.identity);
+        rangedObj = UnityEngine.Object.Instantiate(player.rangedAttackObject, spawnPosition, Quaternion.identity, player.transform);
     }
 }

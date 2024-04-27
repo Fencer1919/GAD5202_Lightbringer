@@ -317,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 6579690510329759501}
   rb: {fileID: 5401953035034114019}
+  hurtBox: {fileID: 1810771648727259820}
   meleeAttackInput: 0
   rangedAttackInput: 0
   oathTracker: {fileID: 0}
@@ -324,9 +325,6 @@ MonoBehaviour:
   playerWeapon: {fileID: 2208148584535968006}
   movementVector: {x: 0, y: 0}
   movementSpeed: 5
-  attackRate: 1
-  rangedAttackRate: 1
-  rangedObj: {fileID: 0}
   rangedAttackObject: {fileID: 3397169170387660612, guid: 59e1963a5cc08214781ef932bf732186,
     type: 3}
   playerInput: {fileID: 6502827751248022001}
@@ -345,7 +343,7 @@ MonoBehaviour:
   playerController: {fileID: 3640540645232433515}
   oathTracker: {fileID: 922278886325305137}
   maxHealth: 100
-  currentPlayerHealth: 100
+  currentHealth: 100
 --- !u!114 &922278886325305137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,15 +357,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 6579690510329759501}
-  count: 0
-  targetCount: 5
-  maxPaladinCount: 0
   spawnPoint: {fileID: 2108231466727773577}
   paladin: {fileID: 1195939852053261461, guid: 414b53363d46b4f68a3bc0d7dd1f7fd0, type: 3}
   oathbreakFilter: {fileID: 0}
   spawnedPaladinList: []
-  damageInterval: 1
-  damageAmount: 0
   currentOathValue: 0
   text: {fileID: 0}
   isPaladinSpawned: 0

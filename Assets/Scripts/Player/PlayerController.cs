@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerHealth playerHealth;
     public Rigidbody2D rb;
+    public Collider2D hurtBox;
 
     private bool isWalking;
     private bool isDodging;

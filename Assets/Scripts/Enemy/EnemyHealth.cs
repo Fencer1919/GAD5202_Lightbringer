@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float enemyHealthValue;
-
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float currentHealth;
 
     [SerializeField] private int enemyExperience;
 
@@ -16,16 +16,17 @@ public class EnemyHealth : MonoBehaviour
 
     private bool isDead = false;
 
-    public float EnemyHealthValue { get => enemyHealthValue; set => enemyHealthValue = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
+    public float MaxHealth { get => maxHealth; set => maxHealth = value; }
+    public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
     public void TakeDamage(float damageValue)
     {
         Debug.Log("Enemy Damaged!");        
 
-        EnemyHealthValue -= damageValue;
+        CurrentHealth -= damageValue;
 
-        if(EnemyHealthValue <= 0)
+        if(CurrentHealth <= 0)
         {
             Die();
         }

@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyWeaponHitBox : MonoBehaviour
 {
     [SerializeField] MainEnemy enemy;
+    [SerializeField] CharacterDetection detection;
 
     [SerializeField] GameObject hitBox;
     [SerializeField] Collider2D hitboxCollider;
@@ -27,23 +29,24 @@ public class EnemyWeaponHitBox : MonoBehaviour
     }
     private void Enemy_OnEnemyAttack()
     {
-        hitBoxDirection = (enemy.aIPath.destination - transform.position).normalized;
-        float angle = Mathf.Atan2(hitBoxDirection.y, hitBoxDirection.x) * Mathf.Rad2Deg;
-        aimTransform.eulerAngles = new Vector3(0, 0, angle);
+        if(!enemy.isRangedEnemy)
+        {
+            hitBoxDirection = (enemy.aIPath.destination - transform.position).normalized;
+            float angle = Mathf.Atan2(hitBoxDirection.y, hitBoxDirection.x) * Mathf.Rad2Deg;
+            aimTransform.eulerAngles = new Vector3(0, 0, angle);
+        }
+        else
+        {
+            Instantiate(bullet, transform.position, Quaternion.identity);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Paladin"))
+        if(collision.TryGetComponent(out PlayerHealth hit))
         {
-            collision.GetComponent<PaladinHealth>().TakeDamage(enemyDamage);
+            hit.TakeDamage(enemyDamage);
         }
-
-        else if (collision.CompareTag("Player"))
-        {
-            collision.GetComponent<PlayerHealth>().TakeDamage(enemyDamage);
-        }
-
     }
 
 }

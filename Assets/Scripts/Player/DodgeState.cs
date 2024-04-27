@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class DodgeState : IState
 {
     private Vector2 dashDirection;
     private float dashSpeed = 10;
     private float dashDuration = 0.2f;
+
     public void EnterState(PlayerController player)
     {
         player.Anim.SetBool("isDodging", true);
+
+        player.hurtBox.enabled = false;
 
         dashDirection = player.movementVector;
     }
@@ -18,6 +20,8 @@ public class DodgeState : IState
     public void ExitState(PlayerController player)
     {
         player.Anim.SetBool("isDodging", false);
+
+        player.hurtBox.enabled = true;
     }
 
     public void UpdateState(PlayerController player)
@@ -25,7 +29,6 @@ public class DodgeState : IState
         player.StartCoroutine(HandleDodge(player));
 
         player.IsAttacking = false;
-
 
         if (!player.IsDodging)
         {

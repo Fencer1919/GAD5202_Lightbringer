@@ -11,6 +11,8 @@ public class EnemyDeadState : EnemyState
             enemy.StopAllCoroutines();
         }
 
+        enemy.hurtBox.enabled = false;
+
         enemy.aIPath.maxSpeed = 0;
 
         enemy.enemyAnim.SetBool("isDead", true);

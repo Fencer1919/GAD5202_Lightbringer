@@ -133,6 +133,7 @@ MonoBehaviour:
   aIPath: {fileID: 4913035896090829363}
   enemyHealth: {fileID: 3632293154483080543}
   rb: {fileID: 5838786837458275773}
+  hurtBox: {fileID: 1453120073568936757}
   enemyHitBox: {fileID: 0}
   rangedStoppingDistance: 7
   stoppingDistance: 1.5
@@ -234,7 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cfefc359040e444e97bf2005aab8499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealthValue: 30
+  maxHealth: 40
+  currentHealth: 40
   enemyExperience: 50
   enemy: {fileID: 4662040536045063072}
 --- !u!70 &1453120073568936757
@@ -447,6 +449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1043575270753744110}
+  - component: {fileID: 2375794834455021438}
   m_Layer: 7
   m_Name: EnemyWeapon
   m_TagString: Enemy
@@ -469,3 +472,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4827822859206726802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2375794834455021438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8499810219440376513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60b4ea9ad963c1489a8715791778257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4662040536045063072}
+  detection: {fileID: 2152059305269965586}
+  hitBox: {fileID: 0}
+  hitboxCollider: {fileID: 0}
+  bullet: {fileID: 9177203423939621621, guid: 1ea70e3a9fda84f0d9d23db9d4015103, type: 3}
+  enemyDamage: 0

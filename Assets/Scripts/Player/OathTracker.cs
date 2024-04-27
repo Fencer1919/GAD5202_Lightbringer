@@ -8,11 +8,6 @@ public class OathTracker : MonoBehaviour
 {
     public PlayerHealth playerHealth;
 
-    public int count = 0;
-    public int targetCount = 5;
-
-    public int maxPaladinCount;
-
     public Transform spawnPoint;
 
     public GameObject paladin;
@@ -20,10 +15,6 @@ public class OathTracker : MonoBehaviour
     public GameObject oathbreakFilter;
 
     public List<GameObject> spawnedPaladinList;
-
-    public int damageInterval;
-    public int damageAmount;
-    private float timer;
 
     public int currentOathValue;
 
@@ -76,16 +67,6 @@ public class OathTracker : MonoBehaviour
         text.text = "Divine Favor " + currentOathValue.ToString();
     }
 
-    public void SpawnCounter()
-    {
-        count ++;
-
-        if(count >= targetCount)
-        {
-            SpawnPaladin();
-            count = 0;
-        }
-    }
 
     public void SpawnPaladin()
     {

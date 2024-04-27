@@ -22,13 +22,13 @@ public class RangedAttack : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.CompareTag("Enemy"))
+        if(collider.TryGetComponent(out EnemyHealth hit))
         {
-            collision.GetComponent<EnemyHealth>().TakeDamage(rangedDamage);
+            hit.TakeDamage(rangedDamage);
 
-            if (collision.GetComponent<EnemyHealth>().IsDead)
+            if (collider.GetComponent<EnemyHealth>().IsDead)
             {
                 onEnemyKilled?.Invoke();
             }

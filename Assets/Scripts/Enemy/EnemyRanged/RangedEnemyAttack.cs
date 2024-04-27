@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class RangedEnemyAttack : MonoBehaviour
 {
-    public EnemyDetection enemyDetection;
+    public GameObject target;
+    public Vector3 bulletDirection;
+
 
     public float rangedEnemyDamage;
 
-    void Update()
-    {
-        if(enemyDetection.targetGameObject != null)
-        {
-            transform.Translate(enemyDetection.targetGameObject.transform.position);
-        }   
+    void Start()
+    {   
+        target = GameObject.FindGameObjectWithTag("Player");
+
+        bulletDirection = (target.transform.position - transform.position).normalized;
+
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void Update()
     {
-            if (collision.CompareTag("Paladin"))
-        {
-            collision.GetComponent<PaladinHealth>().TakeDamage(rangedEnemyDamage);
-        }
+        transform.position += 2 * Time.deltaTime * bulletDirection;
 
-        else if (collision.CompareTag("Player"))
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.TryGetComponent(out PlayerHealth hit))
         {
-            collision.GetComponent<PlayerHealth>().TakeDamage(rangedEnemyDamage);
+            hit.TakeDamage(rangedEnemyDamage);
+
+            Destroy(gameObject);
         }
     }
 }

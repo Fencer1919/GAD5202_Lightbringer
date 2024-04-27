@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private PlayerController playerController;
     [SerializeField] private OathTracker oathTracker;
 
     [SerializeField] private float maxHealth;
-    [SerializeField] private float currentPlayerHealth;
+    [SerializeField] private float currentHealth;
 
     private bool isDead = false;
 
     public bool IsDead { get => isDead; set => isDead = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
-    public float CurrentPlayerHealth { get => currentPlayerHealth; set => currentPlayerHealth = value; }
+    public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
     public void Awake()
     {
@@ -25,22 +25,22 @@ public class PlayerHealth : MonoBehaviour
     {
         if(oathTracker.isOathBroken)
         {
-            currentPlayerHealth *= 2;
+            currentHealth *= 2;
         }
         else
         {
-            currentPlayerHealth /= 2;
+            currentHealth /= 2;
         }
     }
 
 
     public void TakeDamage(float damageValue)
     {
-        CurrentPlayerHealth -= damageValue;
+        CurrentHealth -= damageValue;
 
-        UIManager.Instance.SetHealthBar(CurrentPlayerHealth);
+        UIManager.Instance.SetHealthBar(CurrentHealth);
 
-        if(CurrentPlayerHealth <= 0)
+        if(CurrentHealth <= 0)
         {
             Die();
         }

@@ -12,6 +12,7 @@ public class MainEnemy : MonoBehaviour
 
     public EnemyHealth enemyHealth;
     public Rigidbody2D rb;
+    public Collider2D hurtBox;
     public EnemyWeaponHitBox enemyHitBox;
 
     public float rangedStoppingDistance;

@@ -47,21 +47,14 @@ public class WeaponHitBox : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.CompareTag("Enemy"))
+        if(collider.TryGetComponent(out EnemyHealth hit))
         {
-            if(collider.GetComponent<EnemyHealth>() != null)
-            {
-                collider.GetComponent<EnemyHealth>().TakeDamage(MeleeDamage);
+            hit.TakeDamage(meleeDamage);
 
             if (collider.GetComponent<EnemyHealth>().IsDead)
             {
-                //oathTracker.currentOathValue -= 1;
-
                 onEnemyKilledMelee?.Invoke();
             }
-            }            
-            
-
         }
     }
 
