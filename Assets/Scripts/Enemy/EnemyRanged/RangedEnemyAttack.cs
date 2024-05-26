@@ -7,6 +7,8 @@ public class RangedEnemyAttack : MonoBehaviour
     public GameObject target;
     public Vector3 bulletDirection;
 
+    public float bulletSpeed;
+
 
     public float rangedEnemyDamage;
 
@@ -20,7 +22,7 @@ public class RangedEnemyAttack : MonoBehaviour
 
     void Update()
     {
-        transform.position += 2 * Time.deltaTime * bulletDirection;
+        transform.position += bulletSpeed * Time.deltaTime * bulletDirection;
 
     }
 

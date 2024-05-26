@@ -34,8 +34,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.91, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5189604418523666922}
   - {fileID: 1043575270753744110}
@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cfefc359040e444e97bf2005aab8499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  currentHealth: 50
+  maxHealth: 400
+  currentHealth: 400
   enemyExperience: 100
   enemy: {fileID: 4662040536045063072}
 --- !u!70 &1453120073568936757
@@ -474,7 +474,7 @@ MonoBehaviour:
   hitBox: {fileID: 8499810219440376513}
   hitboxCollider: {fileID: 8058849799521830708}
   bullet: {fileID: 0}
-  enemyDamage: 12
+  enemyDamage: 50
 --- !u!61 &8058849799521830708
 BoxCollider2D:
   m_ObjectHideFlags: 0

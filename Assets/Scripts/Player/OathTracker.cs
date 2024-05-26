@@ -39,7 +39,7 @@ public class OathTracker : MonoBehaviour
 
     private void OnEnemyKilledMelee()
     {
-        currentOathbreakerValue = 1;
+        currentOathbreakerValue += 1;
         UIManager.Instance.SetOathValue(UIManager.Instance.oathBreakerText, "Oathbreaker: ", currentOathbreakerValue);
 
         if(currentOathbreakerValue >= 5 && !isOathBroken)

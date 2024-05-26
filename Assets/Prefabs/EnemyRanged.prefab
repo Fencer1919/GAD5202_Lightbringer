@@ -135,7 +135,7 @@ MonoBehaviour:
   rb: {fileID: 5838786837458275773}
   hurtBox: {fileID: 1453120073568936757}
   enemyHitBox: {fileID: 0}
-  rangedStoppingDistance: 7
+  rangedStoppingDistance: 10
   stoppingDistance: 1.5
   enemyAnim: {fileID: 6636719511649186222}
   isRangedEnemy: 1
@@ -204,7 +204,7 @@ MonoBehaviour:
   rotationSpeed: 0
   slowdownDistance: 0.6
   pickNextWaypointDist: 1.2
-  endReachedDistance: 5
+  endReachedDistance: 10
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -235,9 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cfefc359040e444e97bf2005aab8499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
-  currentHealth: 40
-  enemyExperience: 50
+  maxHealth: 50
+  currentHealth: 50
+  enemyExperience: 75
   enemy: {fileID: 4662040536045063072}
 --- !u!70 &1453120073568936757
 CapsuleCollider2D:
@@ -352,7 +352,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 887
   targetGameObject: {fileID: 0}
-  sphereRadius: 10
+  sphereRadius: 12
   aIPath: {fileID: 4913035896090829363}
   anim: {fileID: 6636719511649186222}
   isAlarmed: 0

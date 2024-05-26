@@ -219,9 +219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cfefc359040e444e97bf2005aab8499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  currentHealth: 50
-  enemyExperience: 100
+  maxHealth: 100
+  currentHealth: 100
+  enemyExperience: 50
   enemy: {fileID: 4662040536045063072}
 --- !u!70 &1453120073568936757
 CapsuleCollider2D:
@@ -474,7 +474,7 @@ MonoBehaviour:
   hitBox: {fileID: 8499810219440376513}
   hitboxCollider: {fileID: 8058849799521830708}
   bullet: {fileID: 0}
-  enemyDamage: 12
+  enemyDamage: 20
 --- !u!61 &8058849799521830708
 BoxCollider2D:
   m_ObjectHideFlags: 0
