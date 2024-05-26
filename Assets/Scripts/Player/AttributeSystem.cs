@@ -52,7 +52,7 @@ public class AttributeSystem : MonoBehaviour
         LevelSystem.onLevelUp += OnLevelUp;
     }
 
-    private void OnLevelUp()
+    private void OnLevelUp(int i)
     {
         spendableAttributePoints = 2;
     }
@@ -66,6 +66,8 @@ public class AttributeSystem : MonoBehaviour
     public void SetStrength(int value)
     {
         strength += value;
+
+        UIManager.Instance.SetAttribute(UIManager.Instance.strText, strength);
 
         weaponHitBox.MeleeDamage += baseDamageMelee * 0.1f;
 
@@ -83,6 +85,8 @@ public class AttributeSystem : MonoBehaviour
     {
         dexterity += value;
 
+        UIManager.Instance.SetAttribute(UIManager.Instance.dexText, dexterity);
+
         critChanceModifier = dexterity * 0.01f;
 
         spendableAttributePoints--;
@@ -98,6 +102,8 @@ public class AttributeSystem : MonoBehaviour
     public void SetHealthPoints(int value)
     {
         healthPoints += value;
+
+        UIManager.Instance.SetAttribute(UIManager.Instance.hpText, healthPoints);
 
         playerHealth.MaxHealth += baseHP * 0.05f;
 
@@ -115,6 +121,8 @@ public class AttributeSystem : MonoBehaviour
     {
         intelligence += value;
 
+        UIManager.Instance.SetAttribute(UIManager.Instance.intText, intelligence);
+
         rangedAttack.rangedDamage += baseDamageRanged * 0.1f;
 
         spendableAttributePoints--;
@@ -131,6 +139,8 @@ public class AttributeSystem : MonoBehaviour
     {
         wisdom += value;
 
+        UIManager.Instance.SetAttribute(UIManager.Instance.wisText, wisdom);
+
         rangedCooldownModifier = baseRangedCooldown - (wisdom * 0.01f);
 
         spendableAttributePoints--;
@@ -146,6 +156,8 @@ public class AttributeSystem : MonoBehaviour
     public void SetHaste(int value)
     {
         haste += value;
+
+        UIManager.Instance.SetAttribute(UIManager.Instance.hsText, haste);
 
         dodgeCooldownModifier = baseDodgeCooldown - (haste * 0.01f);
 

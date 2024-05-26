@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public MainEnemy enemy;
 
-    public static event Action<int> onEnemyDeath;
+    public static event Action<int, GameObject> onEnemyDeath;
 
     private bool isDead = false;
 
@@ -38,7 +38,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         Destroy(gameObject, 2f);
         DeadStateActive();
 
-        onEnemyDeath?.Invoke(enemyExperience);
+        onEnemyDeath?.Invoke(enemyExperience, this.gameObject);
     }
 
     public void DeadStateActive()

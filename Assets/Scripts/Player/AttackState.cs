@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackState : IState
@@ -12,7 +10,7 @@ public class AttackState : IState
 
     [Header("HandleAttack")]
     public float attackRate = 1f;
-    public float rangedAttackRate = 1;
+    public float rangedAttackRate = 2f;
 
     public GameObject rangedObj;
 

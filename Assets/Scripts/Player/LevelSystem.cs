@@ -13,7 +13,7 @@ public class LevelSystem : MonoBehaviour
         7500, 8000, 8500, 9000, 9500, 10000};
 
 
-    public static event Action onLevelUp;
+    public static event Action<int> onLevelUp;
 
     void Awake()
     {
@@ -26,7 +26,7 @@ public class LevelSystem : MonoBehaviour
         experience = 0;
     }
 
-    public void AddExperience(int amount)
+    public void AddExperience(int amount, GameObject gameObject)
     {
         experience += amount;
 
@@ -36,7 +36,7 @@ public class LevelSystem : MonoBehaviour
             experience -= experienceToNextLevel[level];
             level++;
 
-            onLevelUp?.Invoke();
+            onLevelUp?.Invoke(level);
 
         }
     }

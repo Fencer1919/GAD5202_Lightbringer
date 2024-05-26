@@ -16,9 +16,8 @@ public class OathTracker : MonoBehaviour
 
     public List<GameObject> spawnedPaladinList;
 
-    public int currentOathValue;
-
-    public TMP_Text text;
+    public int currentOathbreakerValue;
+    public int currentOathboundValue;
 
     public bool isPaladinSpawned = false;
     public bool isOathBroken = false;
@@ -32,12 +31,18 @@ public class OathTracker : MonoBehaviour
         RangedAttack.onEnemyKilled += OnEnemyKilled;
         WeaponHitBox.onEnemyKilledMelee += OnEnemyKilledMelee;
     }
+    private void Start()
+    {
+        UIManager.Instance.SetOathValue(UIManager.Instance.oathBreakerText, "Oathbreaker: ", currentOathbreakerValue);
+        UIManager.Instance.SetOathValue(UIManager.Instance.oathBoundText, "Oathbound: ", currentOathboundValue);
+    }
 
     private void OnEnemyKilledMelee()
     {
-        currentOathValue -= 1;
+        currentOathbreakerValue = 1;
+        UIManager.Instance.SetOathValue(UIManager.Instance.oathBreakerText, "Oathbreaker: ", currentOathbreakerValue);
 
-        if(currentOathValue <= -5 && !isOathBroken)
+        if(currentOathbreakerValue >= 5 && !isOathBroken)
         {
             onOathBreak.Invoke();
 
@@ -50,9 +55,10 @@ public class OathTracker : MonoBehaviour
 
     public void OnEnemyKilled()
     {
-        currentOathValue += 1;
+        currentOathboundValue += 1;
+        UIManager.Instance.SetOathValue(UIManager.Instance.oathBoundText, "Oathbreaker: ", currentOathboundValue);
 
-        if(currentOathValue >= 5 && !isPaladinSpawned)
+        if (currentOathboundValue >= 5 && !isPaladinSpawned)
         {
             SpawnPaladin();
 
@@ -61,12 +67,6 @@ public class OathTracker : MonoBehaviour
             onOathBreak.Invoke();
         }
     }
-
-    void Update()
-    {
-        text.text = "Divine Favor " + currentOathValue.ToString();
-    }
-
 
     public void SpawnPaladin()
     {

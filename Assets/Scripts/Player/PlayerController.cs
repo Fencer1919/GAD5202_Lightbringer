@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -107,9 +105,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
-
-        Debug.Log(currentState);
-        Debug.Log(IsAttacking);
     }
 
     public void ChangeState(IState newState)
@@ -143,8 +138,6 @@ public class PlayerController : MonoBehaviour
     }
     private void RangedAttack(InputAction.CallbackContext context)
     {
-        Invoke("HandleRangedAttackCooldown", 1f);
-
         rangedAttackInput = context.ReadValueAsButton();
 
         if (context.performed)
@@ -176,6 +169,8 @@ public class PlayerController : MonoBehaviour
     public void HandleRangedAttackCooldown()
     {
         if (rangedAttackInput) { return; }
+
+        Debug.Log("rangedattackcooldown");
 
         IsAttacking = false;
     }

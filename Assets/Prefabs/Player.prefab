@@ -94,6 +94,84 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.64}
   m_EdgeRadius: 0
+--- !u!1 &5947793186617861705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2190465876429946793}
+  - component: {fileID: 7909883608798565412}
+  - component: {fileID: 8331624529444392048}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2190465876429946793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947793186617861705}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 16.4, y: 4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2108231466727773577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7909883608798565412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947793186617861705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919370189410941a88edcdf7d09945fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  experience: 0
+  experienceToNextLevel: 64000000c80000002c010000900100005802000020030000e8030000b0040000780500004006000008070000d00700009808000060090000280a0000f00a0000b80b0000800c0000480d0000100e0000d80e0000a00f000094110000881300007c1500007017000064190000581b00004c1d0000401f000034210000282300001c25000010270000
+--- !u!114 &8331624529444392048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947793186617861705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8290440a039e74976a8139b3fd882f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  playerHealth: {fileID: 6579690510329759501}
+  weaponHitBox: {fileID: 5460674523400929930}
+  rangedAttack: {fileID: 6114679723614046319, guid: 59e1963a5cc08214781ef932bf732186,
+    type: 3}
+  strength: 0
+  dexterity: 0
+  healthPoints: 0
+  intelligence: 0
+  wisdom: 0
+  haste: 0
+  baseDamageMelee: 40
+  critChance: 0
+  baseHP: 100
+  baseDamageRanged: 50
+  baseRangedCooldown: 4
+  baseDodgeCooldown: 1
+  spendableAttributePoints: 0
 --- !u!1 &7251471702953891152
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +212,7 @@ Transform:
   - {fileID: 5771005935297146070}
   - {fileID: 6003249609642661934}
   - {fileID: 3829669389428919410}
+  - {fileID: 2190465876429946793}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2986207497740043278
@@ -361,8 +440,8 @@ MonoBehaviour:
   paladin: {fileID: 1195939852053261461, guid: 414b53363d46b4f68a3bc0d7dd1f7fd0, type: 3}
   oathbreakFilter: {fileID: 0}
   spawnedPaladinList: []
-  currentOathValue: 0
-  text: {fileID: 0}
+  currentOathbreakerValue: 0
+  currentOathboundValue: 0
   isPaladinSpawned: 0
   isOathBroken: 0
 --- !u!1 &7331205981650405387
@@ -437,7 +516,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ca9fdffbb73ad4885bdd37d9a01fa9b1, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.2901961}
   m_FlipX: 0
