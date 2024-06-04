@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -11,6 +12,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject AttributeTab;
     public Button[] attributeButtons;
+
+    public GameObject DungeonTab;
+    public CameraAnimationScript cameraAnimationScript;//temporary
+
+    public GameObject restartPanel;
 
     public Slider healthBar;
 
@@ -34,9 +40,39 @@ public class UIManager : MonoBehaviour
         else
         Destroy(gameObject);
 
+
         PlayerController.onToggleAttributeTab += ToggleAttributeTab;
+        ChooseLevel.onDungeonSelection += OnDungeonSelection;
         AttributeSystem.noAttributePoints += NoAttributePoints;
         LevelSystem.onLevelUp += OnLevelUp;
+
+        DeadState.onDead += OnPlayerDead;
+    }
+
+    private void OnPlayerDead()
+    {
+        //check these nullchecks later
+        if (restartPanel != null)
+        {
+            restartPanel.SetActive(true);
+        }
+
+    }
+
+    private void OnDungeonSelection()
+    {
+        //check these nullchecks later
+        if (DungeonTab != null)
+        {
+            if (cameraAnimationScript.IsDungeonSelectionActive)
+            {
+                DungeonTab.SetActive(false);
+            }
+            else
+            {
+                DungeonTab.SetActive(true);
+            }
+        }
     }
 
     private void Start()
@@ -79,14 +115,19 @@ public class UIManager : MonoBehaviour
 
     private void ToggleAttributeTab()
     {
-        if (PlayerController.Instance.IsAttributeTab)
+        //check these nullchecks later
+        if (AttributeTab != null)
         {
-            AttributeTab.SetActive(true);
+            if (PlayerController.Instance.IsAttributeTab)
+            {
+                AttributeTab.SetActive(true);
+            }
+            else
+            {
+                AttributeTab.SetActive(false);
+            }
         }
-        else
-        {
-            AttributeTab.SetActive(false);
-        }
+
 
     }
 }

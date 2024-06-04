@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
         else
             Destroy(gameObject);
 
+
         playerInputAction = new PlayerInputAction();
         playerInputAction.Enable();
 

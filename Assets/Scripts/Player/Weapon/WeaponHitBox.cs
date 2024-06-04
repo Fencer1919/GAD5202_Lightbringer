@@ -18,8 +18,9 @@ public class WeaponHitBox : MonoBehaviour
 
     public float MeleeDamage { get => meleeDamage; set => meleeDamage = value; }
 
-    private void Start()
+    private void Awake()
     {
+        hitBoxDirection = Vector2.zero;
         aimTransform = GetComponent<Transform>();
 
         AttackState.onAttack += Player_onAttack;
@@ -39,17 +40,24 @@ public class WeaponHitBox : MonoBehaviour
     }
 
     private void Player_onAttack()
-    {       
-        hitBoxDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-        float angle = Mathf.Atan2(hitBoxDirection.y, hitBoxDirection.x) * Mathf.Rad2Deg;
-        aimTransform.eulerAngles = new Vector3(0, 0, angle);
+    {
+        if(this != null)
+        {
+            hitBoxDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+            float angle = Mathf.Atan2(hitBoxDirection.y, hitBoxDirection.x) * Mathf.Rad2Deg;
+            aimTransform.eulerAngles = new Vector3(0, 0, angle);
+        }
+
     }
     
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.TryGetComponent(out EnemyHealth hit))
         {
-            hit.TakeDamage(meleeDamage);
+            if(hit != null)
+            {
+                hit.TakeDamage(meleeDamage);
+            }
 
             if (collider.GetComponent<EnemyHealth>().IsDead)
             {

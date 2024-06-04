@@ -12,7 +12,8 @@ public class OathTracker : MonoBehaviour
 
     public GameObject paladin;
 
-    public GameObject oathbreakFilter;
+    public Color oathbreakFilter;
+    public SpriteRenderer spriteRenderer;
 
     public List<GameObject> spawnedPaladinList;
 
@@ -48,7 +49,8 @@ public class OathTracker : MonoBehaviour
 
             isOathBroken = true;
 
-            oathbreakFilter.SetActive(true);
+            spriteRenderer.color = oathbreakFilter;
+
 
         }
     }
@@ -56,21 +58,24 @@ public class OathTracker : MonoBehaviour
     public void OnEnemyKilled()
     {
         currentOathboundValue += 1;
-        UIManager.Instance.SetOathValue(UIManager.Instance.oathBoundText, "Oathbreaker: ", currentOathboundValue);
+        UIManager.Instance.SetOathValue(UIManager.Instance.oathBoundText, "Oathbound: ", currentOathboundValue);
 
         if (currentOathboundValue >= 5 && !isPaladinSpawned)
         {
             SpawnPaladin();
 
             isPaladinSpawned = true;
-
-            onOathBreak.Invoke();
         }
     }
 
     public void SpawnPaladin()
     {
-        paladin.transform.position = spawnPoint.position;
+        //check these nullchecks
+        if (paladin != null && spawnPoint != null)
+        {
+            paladin.transform.position = spawnPoint.position;   
+
+        }
         
         Instantiate(paladin, paladin.transform.position, Quaternion.identity);
 

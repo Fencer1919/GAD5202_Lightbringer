@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
+    PlayerHealth Instance;
+
     [SerializeField] private PlayerController playerController;
     [SerializeField] private OathTracker oathTracker;
 
@@ -18,6 +20,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
         OathTracker.onOathBreak += OnOathBreak;
     }
 
